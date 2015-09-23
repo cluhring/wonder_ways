@@ -1,5 +1,5 @@
 require "will_paginate/array"
-class Api::V1::TrailsController < ApplicationController
+class Api::V1::TrailsController
   respond_to :json
 
   def index
