@@ -1,5 +1,5 @@
 class Api::V1::TrailsController
-  respond_to :json
+  respond_to(:json, :html)
 
   def index
     @trails = Trail.paginate(page: params[:page], per_page: 30)
