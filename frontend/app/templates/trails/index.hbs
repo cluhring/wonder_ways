@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-md-1">
+    <a href="/"><img src="assets/images/back-button.png" class="back-button"></a>
+  </div>
+  <div class="col-md-8">
+    <img src="http://s24.postimg.org/u2976j7ol/transparent_wonder_ways_logo.png" id="logo"/>
+  </div>
+</div>
+<div id="search">
+    <button type="button" class="close">×</button>
+    <form>
+      {{input type="search" value=searchTerm placeholder="Enter Keyword(s)" autocomplete="off"}}
+    </form>
+</div>
+<div class="row well">
+  <div class="states-index">
+  <h1>Trails by State</h1>
+  <div class="state-links">
+    {{#each allStates as |state| }}
+    {{#link-to 'trails' state}}{{state}}{{/link-to}}
+    {{/each}}
+  </div>
+</div>
+</div>
+
+<div class="row well">
+  <h2 class="state-title">Trails<span class="top-buttons"><a href="#lookUp"><img src="assets/images/filter.png" class="search-btn"></a></span></h2>
+  <div class="col-md-6">
+    <ul class="state-results">
+      {{#each filteredTrails as |trail|}}
+      <li class="state-results">{{#link-to 'trail' trail}}{{trail.name}}{{/link-to}}</li>
+      <li class="state-results">{{trail.city}}, {{trail.state}}</li>
+      {{/each}}
+    </ul>
+  </div>
+<div class="col-md-6">
+  <div id="index-map" class="map">
+      {{index-map trails=model}}
+    </div>
+  </div>
+</div>
+
+<script>
+$(function () {
+  console.log("finding lookup", $("a[href='#lookUp']"));
+
+  $(document).ready(function () {
+    console.log("finding lookup", $("a[href='#lookUp']"));
+
+
+    $('a[href="#lookUp"]').on('click', function(event) {
+        event.preventDefault();
+        $('#search').addClass('open');
+        $('#search > form > input[type="search"]').focus();
+    });
+
+    $('#search, #search button.close').on('click keyup', function(event) {
+        if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
+            $(this).removeClass('open');
+        }
+    });
+  });
+});
+</script>
