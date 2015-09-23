@@ -1,4 +1,3 @@
-require "will_paginate/array"
 class Api::V1::TrailsController
   respond_to :json
 
