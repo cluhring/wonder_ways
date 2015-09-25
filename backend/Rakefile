@@ -5,18 +5,15 @@ require File.expand_path("../config/application", __FILE__)
 
 Rails.application.load_tasks
 
-task :populate, [] => :environment do
+task :populate_trails, [] => :environment do
   Rails.env = "development"
   TrailsService.new.get_all_trails(1000)
-  while (!ready_to_go?)
-    sleep(1)
-  end
+end
+
+task :populate_trail_info, [] => :environment do
+  Rails.env = "development"
   trails = Trail.all
   trails.each do |trail|
     ApiCombiner.get_species(trail.id)
   end
-end
-
-def ready_to_go?
-  Trail.count > 14900
 end
