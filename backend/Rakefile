@@ -16,3 +16,7 @@ task :populate, [] => :environment do
     ApiCombiner.get_species(trail.id)
   end
 end
+
+def ready_to_go?
+  Trail.count > 14900
+end
