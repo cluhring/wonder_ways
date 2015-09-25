@@ -33,8 +33,8 @@ module ApiCombiner
     xeno_canto = XenoCantoService.new
     eol = EolService.new
 
-    xeno_canto_species = xeno_canto.recordings(lat - 0.1, lng - 0.1,
-                                               lat + 0.1, lng + 0.1)
+    xeno_canto_species = xeno_canto.recordings(lat - 0.01, lng - 0.01,
+                                               lat + 0.01, lng + 0.01)
     xeno_canto_species.each do |species|
       if species["id"]
         img = eol.image_from_species(species["gen"], species["sp"])
