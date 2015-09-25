@@ -1,6 +1,6 @@
 class Trail < ActiveRecord::Base
-  has_many :activities
-  has_many :species
+  has_many :activities, dependent: :destroy
+  has_many :species, dependent: :destroy
 
   scope :filter_by_state, -> (state) {
     where("lower(state) LIKE ?", "%#{state.downcase}%")
