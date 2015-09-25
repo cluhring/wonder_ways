@@ -27,7 +27,6 @@ export default Ember.Component.extend({
       "properties": {"marker-symbol": "park", "marker-color": "#0C5CFE", "marker-size": "large"}
        }]
     };
-
-var myLayer = L.mapbox.featureLayer(points).addTo(map);
+  L.mapbox.featureLayer(points).addTo(map);
 }
 });

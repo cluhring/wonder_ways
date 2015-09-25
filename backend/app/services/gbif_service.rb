@@ -7,8 +7,8 @@ class GbifService
 
   def species(lat, long)
     parse(connection
-      .get("search?decimalLatitude=#{lat - 0.01},#{lat + 0.01}&\
-      decimalLongitude=#{long - 0.01},#{long + 0.01}"))
+      .get("search?decimalLatitude=#{lat - 0.001},#{lat + 0.001}&\
+      decimalLongitude=#{long - 0.001},#{long + 0.001}"))
   end
 
   private
