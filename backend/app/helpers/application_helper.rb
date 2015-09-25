@@ -1,5 +1,5 @@
 module ApplicationHelper
   def ready_to_go?
-    Trail.count > 15000
+    Trail.count > 14900
   end
 end
