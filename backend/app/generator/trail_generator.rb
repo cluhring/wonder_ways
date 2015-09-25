@@ -3,7 +3,6 @@ class TrailGenerator
     data.each do |trail|
       if trail["lat"] != 0
         saved_trail = Trail.find_or_create_by(unique_id: trail["unique_id"]) do |t|
-          require 'pry' ; binding.pry
           t.name        = trail["name"]
           t.city        = trail["city"]
           t.state       = trail["state"]
