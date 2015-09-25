@@ -123,10 +123,10 @@ export default Ember.Component.extend({
         mouseout: resetHighlight,
         click: function (e) {
           zoomToFeature(e);
-          this.set('selectedState', feature.properties.name)
+          this.set('selectedState', feature.properties.name);
         }.bind(this)
       });
-    }
+    };
 
     geojson = L.geoJson(statesData, {
         style: style,
@@ -155,8 +155,7 @@ export default Ember.Component.extend({
     legend.onAdd = function (map) {
 
       var div = L.DomUtil.create('div', 'info legend'),
-          grades = [ 50, 100, 200, 400, 700],
-          labels = [];
+          grades = [ 50, 100, 200, 400, 700];
 
       // loop through our density intervals and generate a label with a colored square for each interval
       for (var i = 0; i < grades.length; i++) {
