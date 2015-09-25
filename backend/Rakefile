@@ -15,5 +15,4 @@ task :populate, [] => :environment do
   trails.each do |trail|
     ApiCombiner.get_species(trail.id)
   end
-  DELETE FROM Trails WHERE lat = 0
 end
