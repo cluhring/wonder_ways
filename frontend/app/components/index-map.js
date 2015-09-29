@@ -21,13 +21,14 @@ export default Ember.Component.extend({
     let points = function () {
       let output = [];
       trails.forEach(function(trail) {
+        console.log(trail);
         let point = { "type": "Feature",
           "geometry": {"type": "Point", "coordinates": [trail.lng, trail.lat]},
           "properties": {"marker-symbol": "park", "marker-color": "#0C5CFE", "marker-size": "large"}
         };
         output.push(point);
       });
-      return output;
+      return output
     };
 
     map.setView([trails[0].lat, trails[0].lng], 6);
@@ -35,6 +36,7 @@ export default Ember.Component.extend({
     var pointSet = { "type": "FeatureCollection",
       "features": points()
     };
-  L.mapbox.featureLayer(pointSet).addTo(map);
+
+var myLayer = L.mapbox.featureLayer(pointSet).addTo(map);
 }
 });
