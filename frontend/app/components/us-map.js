@@ -72,12 +72,12 @@ export default Ember.Component.extend({
 
 
     function getColor(d) {
-      return d > 1000 ? '#4a1486' :
-             d > 500  ? '#6a51a3' :
+      return d > 700 ? '#4a1486' :
+             d > 400  ? '#6a51a3' :
              d > 200  ? '#807dba' :
              d > 100  ? '#9e9ac8' :
              d > 50   ? '#bcbddc' :
-                        'black';
+                        '#e6e8fa';
     }
 
     function style(feature) {
@@ -155,7 +155,7 @@ export default Ember.Component.extend({
     legend.onAdd = function (map) {
 
       var div = L.DomUtil.create('div', 'info legend'),
-          grades = [ 50, 100, 200, 500, 1000],
+          grades = [0, 50, 100, 200, 400, 700],
           labels = [];
 
       // loop through our density intervals and generate a label with a colored square for each interval
