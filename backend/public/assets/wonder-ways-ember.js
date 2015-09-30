@@ -709,11 +709,11 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
         var el2 = dom.createTextNode("\n  ");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("div");
-        dom.setAttribute(el2,"class","col-md-8");
+        dom.setAttribute(el2,"class","col-md-3");
         var el3 = dom.createTextNode("\n    ");
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("img");
-        dom.setAttribute(el3,"src","http://s24.postimg.org/u2976j7ol/transparent_wonder_ways_logo.png");
+        dom.setAttribute(el3,"src","assets/images/transparent-wonder-ways-logo.png");
         dom.setAttribute(el3,"id","logo");
         dom.appendChild(el2, el3);
         var el3 = dom.createTextNode("\n  ");
@@ -3025,7 +3025,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.f4297dd7"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.1ad8414e"});
 }
 
 /* jshint ignore:end */
