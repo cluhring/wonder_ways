@@ -118,7 +118,8 @@ export default Ember.Component.extend({
     }
 
     function goToStatePage(state) {
-      window.location.href = "/" + state
+      location.href = "/" + state
+      // router.transitionTo('trails', state)
       // App.Router.router.transitionTo("/" + state);
     }
 
