@@ -3025,7 +3025,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.b8c4d7a3"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.54256783"});
 }
 
 /* jshint ignore:end */
