@@ -11,7 +11,7 @@ export default Ember.Component.extend({
 
     L.mapbox.accessToken = 'pk.eyJ1IjoiY2x1aHJpbmciLCJhIjoiNWF2Z1l6ZyJ9.8peAq7kTQyvXShlVv1K82w';
 
-    let map = L.mapbox.map(this.elementId, 'cluhring.9d2c52ea');
+    let map = L.mapbox.map(this.elementId, 'cluhring.nj0aokjp');
     this.set('map', map);
 
     var statesData =  {"type":"FeatureCollection","features":[
@@ -72,12 +72,12 @@ export default Ember.Component.extend({
 
 
     function getColor(d) {
-      return d > 1000 ? '#4a1486' :
-             d > 500  ? '#6a51a3' :
+      return d > 700 ? '#4a1486' :
+             d > 400  ? '#6a51a3' :
              d > 200  ? '#807dba' :
              d > 100  ? '#9e9ac8' :
              d > 50   ? '#bcbddc' :
-                        'black';
+                        '#e6e8fa';
     }
 
     function style(feature) {
@@ -117,13 +117,18 @@ export default Ember.Component.extend({
       map.fitBounds(e.target.getBounds());
     }
 
+    function goToStatePage(state) {
+      location.href = "/" + state
+    }
+
     let onEachFeature = (feature, layer) => {
       layer.on({
         mouseover: highlightFeature,
         mouseout: resetHighlight,
         click: function (e) {
           zoomToFeature(e);
-          this.set('selectedState', feature.properties.name)
+          this.set('selectedState', feature.properties.name);
+          goToStatePage(feature.properties.name);
         }.bind(this)
       });
     }
@@ -145,7 +150,7 @@ export default Ember.Component.extend({
     info.update = function (props) {
       this._div.innerHTML =  (props ?
           '<b>' + props.name + '</b><br />' + props.tot_trails + ' trails'
-          : 'Hover over a state');
+          : 'Click state to view trails');
     };
 
     info.addTo(map);
@@ -155,7 +160,7 @@ export default Ember.Component.extend({
     legend.onAdd = function (map) {
 
       var div = L.DomUtil.create('div', 'info legend'),
-          grades = [ 50, 100, 200, 500, 1000],
+          grades = [0, 50, 100, 200, 400, 700],
           labels = [];
 
       // loop through our density intervals and generate a label with a colored square for each interval
