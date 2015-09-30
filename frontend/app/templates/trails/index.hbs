@@ -3,7 +3,7 @@
     <a href="/"><img src="assets/images/back-button.png" class="back-button"></a>
   </div>
   <div class="col-md-8">
-    <img src="http://s24.postimg.org/u2976j7ol/transparent_wonder_ways_logo.png" id="logo"/>
+    <img src="assets/images/transparent-wonder-ways-logo.png" id="logo"/>
   </div>
 </div>
 <div id="search">
@@ -29,7 +29,7 @@
     <ul class="state-results">
       {{#each filteredTrails as |trail|}}
       <li class="state-results">{{#link-to 'trail' trail}}{{trail.name}}{{/link-to}}</li>
-      <li class="state-results">{{trail.city}}, {{trail.state}}</li>
+      <li class="state-results-location">{{trail.city}}, {{trail.state}}</li>
       {{/each}}
     </ul>
   </div>

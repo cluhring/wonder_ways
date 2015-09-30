@@ -291,12 +291,16 @@ img.img-thumbnail {
   margin-left: 50px;
 }
 
-a.ember-view {
+div.state-results a.ember-view {
   display: inline-block;
-  width: 165px;
-  font-size: 20px;
+  width: 400px;
 }
 
-li.state-results {
-  margin: 5px;
+.state-results {
+  font-size: 25px;
+}
+
+.state-results-location {
+  font-size: 20px;
+  color: purple;
 }

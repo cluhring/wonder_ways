@@ -31,7 +31,8 @@ export default Ember.Component.extend({
       return output
     };
 
-    map.setView([trails[0].lat, trails[0].lng], 6);
+    // map.fitBounds(trails);
+    map.setView([trails[6].lat, trails[6].lng], 5);
 
     var pointSet = { "type": "FeatureCollection",
       "features": points()

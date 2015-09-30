@@ -118,7 +118,8 @@ export default Ember.Component.extend({
     }
 
     function goToStatePage(state) {
-      location.href = "/" + state
+      window.location.href = "/" + state
+      // App.Router.router.transitionTo("/" + state);
     }
 
     let onEachFeature = (feature, layer) => {
