@@ -30,10 +30,12 @@ gem 'wonder_ways'
 * Clone the repo
 * bundle install
 * rake run - to run the applications locally.
-* The backend Rails API can be found ["here."](http://localhost:3900/api/v1/trails)
-* The frontend Ember application can be found ["here."](http://localhost:4900)
+* The backend Rails API can be found [here.](http://localhost:3900/api/v1/trails)
+* The frontend Ember application can be found [here.](http://localhost:4900)
 
 To deploy this application to heroku, please follow the steps below:
+* create a heroku app
+* get a trails_api_key [here.](http://www.trailapi.com/faq.php)
 * rake deploy
 * heroku run rake db:migrate - will set up your Postgress database
 * heroku run rake populate - will populate your Postgress database.

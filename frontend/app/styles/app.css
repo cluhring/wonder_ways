@@ -16,7 +16,7 @@ button.icon {
 }
 
 #logo {
-  margin-top: 30px;
+  margin-top: 20px;
   margin-bottom: 30px;
 }
 
@@ -52,12 +52,13 @@ li {
 }
 
 .us-map {
-  width: 1400px;
-  height: 800px;
+  width: 800px;
+  height: 500px;
   margin-bottom: 10px;
   margin-top: 10px;
-  margin-right: 15px;
-  margin-left: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .info {
@@ -245,7 +246,7 @@ div.state-links a.ember-view {
 }
 
 .container {
-    width: 1470px;
+    width: 1200px;
 }
 
 .mission-statement {
