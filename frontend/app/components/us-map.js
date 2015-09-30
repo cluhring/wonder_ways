@@ -11,7 +11,7 @@ export default Ember.Component.extend({
 
     L.mapbox.accessToken = 'pk.eyJ1IjoiY2x1aHJpbmciLCJhIjoiNWF2Z1l6ZyJ9.8peAq7kTQyvXShlVv1K82w';
 
-    let map = L.mapbox.map(this.elementId, 'cluhring.9d2c52ea');
+    let map = L.mapbox.map(this.elementId, 'cluhring.nj0aokjp');
     this.set('map', map);
 
     var statesData =  {"type":"FeatureCollection","features":[
@@ -117,13 +117,18 @@ export default Ember.Component.extend({
       map.fitBounds(e.target.getBounds());
     }
 
+    function goToStatePage(state) {
+      location.href = "/" + state
+    }
+
     let onEachFeature = (feature, layer) => {
       layer.on({
         mouseover: highlightFeature,
         mouseout: resetHighlight,
         click: function (e) {
           zoomToFeature(e);
-          this.set('selectedState', feature.properties.name)
+          this.set('selectedState', feature.properties.name);
+          goToStatePage(feature.properties.name);
         }.bind(this)
       });
     }
@@ -145,7 +150,7 @@ export default Ember.Component.extend({
     info.update = function (props) {
       this._div.innerHTML =  (props ?
           '<b>' + props.name + '</b><br />' + props.tot_trails + ' trails'
-          : 'Hover over a state');
+          : 'Click state to view trails');
     };
 
     info.addTo(map);

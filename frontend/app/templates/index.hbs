@@ -14,28 +14,28 @@
   <div class="featured frontPage" hidden=true>
     <div class="row featured-trails">
       <div class="col-md-3">
-        <a href="/California/1290"><img src="assets/images/autumn-hike.jpg" class="img-thumbnail" height="300px" width="250px"/></a>
+        <a href="/California/1523"><img src="assets/images/autumn-hike.jpg" class="img-thumbnail" height="300px" width="325px"/></a>
         <div class="pic-info">
           <h4>Knolls Loop</h4>
           <p>Mammoth Lakes, California</p>
         </div>
       </div>
       <div class="col-md-3">
-        <a href="/Maine/5332"><img src="assets/images/moss-hike.jpg" class="img-thumbnail" height="300px" width="250px"/></a>
+        <a href="/Maine/7102"><img src="assets/images/moss-hike.jpg" class="img-thumbnail" height="300px" width="325px"/></a>
         <div class="pic-info">
           <h4>Sunday River</h4>
           <p>Newry, Maine</p>
         </div>
       </div>
       <div class="col-md-3">
-        <a href="/Oregon/10566"><img src="assets/images/cool-hike.jpg" class="img-thumbnail" height="300px" width="250px"/></a>
+        <a href="/Oregon/12609"><img src="assets/images/cool-hike.jpg" class="img-thumbnail" height="300px" width="325px"/></a>
         <div class="pic-info">
           <h4>Lost Creek</h4>
           <p>Oakridge, Oregon</p>
         </div>
       </div>
       <div class="col-md-3">
-        <a href="/Colorado/2141"><img src="assets/images/mountain-hike.jpg" class="img-thumbnail" height="300px" width="250px"/></a>
+        <a href="/Colorado/2873"><img src="assets/images/mountain-hike.jpg" class="img-thumbnail" height="300px" width="325px"/></a>
         <div class="pic-info">
           <h4>Georgia Pass</h4>
           <p>Jefferson, Colorado</p>
@@ -45,34 +45,34 @@
   </div>
 
   <div class="mission frontPage" hidden=true>
-      <img src="assets/images/statement.png"/>
+      <img class="mission-statement" src="assets/images/statement.png"/>
   </div>
 
   <div class="news frontPage" hidden=true>
     <div class="row featured-trails">
       <div class="col-md-3">
-        <a href="http://www.bikeradar.com/us/road/gear/article/30-reasons-to-take-up-cycling-23965/"><img src="assets/images/biking.jpg" class="img-thumbnail" height="300px" width="250px"/></a>
+        <a href="http://www.bikeradar.com/us/road/gear/article/30-reasons-to-take-up-cycling-23965/"><img src="assets/images/biking.jpg" class="img-thumbnail" height="300px" width="325px"/></a>
         <div class="pic-info">
           <h4>Biking</h4>
           <p>30 reasons to take up cycling</p>
         </div>
       </div>
       <div class="col-md-3">
-        <a href="http://www.huffingtonpost.com/2014/07/18/how-taking-a-hike-can-mak_n_5584809.html"><img src="assets/images/hiking.jpg" class="img-thumbnail" height="300px" width="250px"/></a>
+        <a href="http://www.huffingtonpost.com/2014/07/18/how-taking-a-hike-can-mak_n_5584809.html"><img src="assets/images/hiking.jpg" class="img-thumbnail" height="300px" width="325px"/></a>
         <div class="pic-info">
           <h4>Hiking</h4>
           <p>Hiking Makes You Happier And Healthier</p>
         </div>
       </div>
       <div class="col-md-3">
-        <a href="http://www.active.com/outdoors/articles/6-tips-for-your-first-lead-climb"><img src="assets/images/rock.jpg" class="img-thumbnail" height="300px" width="250px"/></a>
+        <a href="http://www.active.com/outdoors/articles/6-tips-for-your-first-lead-climb"><img src="assets/images/rock.jpg" class="img-thumbnail" height="300px" width="325px"/></a>
         <div class="pic-info">
           <h4>Rock Climbing</h4>
           <p>6 Tips for Your First Lead Climb</p>
         </div>
       </div>
       <div class="col-md-3">
-        <a href="http://www.birdsandblooms.com/birding/birding-basics/birding-health/"><img src="assets/images/bird-watching.jpg" class="img-thumbnail" height="300px" width="250px"/></a>
+        <a href="http://www.birdsandblooms.com/birding/birding-basics/birding-health/"><img src="assets/images/bird-watching.jpg" class="img-thumbnail" height="300px" width="325px"/></a>
         <div class="pic-info">
           <h4>Bird Watching</h4>
           <p>Birding For Your Health</p>
@@ -81,20 +81,9 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-8">
-    <div id="us-map" class="map">
-      <h3>Checkout the trails in <span>{{#link-to 'trails' selectedState}}{{selectedState}}{{/link-to}}</span></h3>
-      {{us-map trails=model selectedState=selectedState}}
-    </div>
-  </div>
-  <div class="col-md-4 well">
-    <h1 class="state">See Trails in Your State</h1>
-    <div class="state-links">
-      {{#each allStates as |state| }}
-      {{#link-to 'trails' state}}{{state}}{{/link-to}}
-      {{/each}}
-    </div>
+<div class="row well">
+  <div id="us-map" class="map">
+    {{us-map trails=model selectedState=selectedState}}
   </div>
 </div>
 <script>
