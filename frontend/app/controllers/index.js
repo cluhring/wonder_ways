@@ -7,14 +7,15 @@ export default Ember.Controller.extend({
     Ember.$('.frontPage').hide();
     Ember.$(type).show();
   },
-  goToStatePage: function(state) {
-    location.href = "/" + state
+  setStatePage: function(state) {
+    this.set('statePage', state);
+    location.href = "/" + state;
   },
 
 },
 
   searchTerm: '',
-  selectedState: '',
+  // selectedState: '',
   allStates: ["Alabama",
   "Alaska",
   "Arizona",
