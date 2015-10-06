@@ -7,6 +7,10 @@ export default Ember.Controller.extend({
     Ember.$('.frontPage').hide();
     Ember.$(type).show();
   },
+  goToStatePage: function(state) {
+    location.href = "/" + state
+  },
+
 },
 
   searchTerm: '',
