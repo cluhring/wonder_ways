@@ -118,7 +118,6 @@ define('wonder-ways-ember/components/us-map', ['exports', 'ember'], function (ex
   /* globals L */
 
   exports['default'] = Ember['default'].Component.extend({
-
     map: null,
     classNames: ["us-map"],
 
@@ -174,11 +173,9 @@ define('wonder-ways-ember/components/us-map', ['exports', 'ember'], function (ex
         map.fitBounds(e.target.getBounds());
       }
 
-      function goToStatePage(state) {
-        window.location.href = "/" + state
-        // App.Router.router.transitionTo("/" + state);
-        ;
-      }
+      // function goToStatePage(state) {
+      //   location.href = "/" + state
+      // }
 
       var onEachFeature = function (feature, layer) {
         layer.on({
@@ -187,7 +184,7 @@ define('wonder-ways-ember/components/us-map', ['exports', 'ember'], function (ex
           click: (function (e) {
             zoomToFeature(e);
             this.set("selectedState", feature.properties.name);
-            goToStatePage(feature.properties.name);
+            // goToStatePage(feature.properties.name);
           }).bind(_this)
         });
       };
@@ -243,6 +240,9 @@ define('wonder-ways-ember/controllers/index', ['exports', 'ember'], function (ex
       indexFilter: function indexFilter(type) {
         Ember['default'].$(".frontPage").hide();
         Ember['default'].$(type).show();
+      },
+      goToStatePage: function goToStatePage(state) {
+        location.href = "/" + state;
       } },
 
     searchTerm: "",
@@ -1148,7 +1148,7 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
       },
       render: function render(context, env, contextualElement) {
         var dom = env.dom;
-        var hooks = env.hooks, element = hooks.element, get = hooks.get, inline = hooks.inline;
+        var hooks = env.hooks, element = hooks.element, inline = hooks.inline;
         dom.detectNamespace(contextualElement);
         var fragment;
         if (env.useFragmentCache && dom.canClone) {
@@ -1174,7 +1174,7 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
         element(env, element1, context, "action", ["indexFilter", ".featured"], {});
         element(env, element2, context, "action", ["indexFilter", ".mission"], {});
         element(env, element3, context, "action", ["indexFilter", ".news"], {});
-        inline(env, morph0, context, "us-map", [], {"trails": get(env, context, "model"), "selectedState": get(env, context, "selectedState")});
+        inline(env, morph0, context, "us-map", [], {"goToStatePage": "selectedState"});
         return fragment;
       }
     };
@@ -2539,7 +2539,7 @@ define('wonder-ways-ember/tests/components/us-map.jshint', function () {
 
   module('JSHint - components');
   test('components/us-map.js should pass jshint', function() { 
-    ok(false, 'components/us-map.js should pass jshint.\ncomponents/us-map.js: line 121, col 41, Missing semicolon.\ncomponents/us-map.js: line 135, col 6, Missing semicolon.\ncomponents/us-map.js: line 144, col 28, \'map\' is defined but never used.\ncomponents/us-map.js: line 165, col 11, \'labels\' is defined but never used.\ncomponents/us-map.js: line 161, col 30, \'map\' is defined but never used.\n\n5 errors'); 
+    ok(false, 'components/us-map.js should pass jshint.\ncomponents/us-map.js: line 133, col 6, Missing semicolon.\ncomponents/us-map.js: line 142, col 28, \'map\' is defined but never used.\ncomponents/us-map.js: line 163, col 11, \'labels\' is defined but never used.\ncomponents/us-map.js: line 159, col 30, \'map\' is defined but never used.\n\n4 errors'); 
   });
 
 });
@@ -2549,7 +2549,7 @@ define('wonder-ways-ember/tests/controllers/index.jshint', function () {
 
   module('JSHint - controllers');
   test('controllers/index.js should pass jshint', function() { 
-    ok(true, 'controllers/index.js should pass jshint.'); 
+    ok(false, 'controllers/index.js should pass jshint.\ncontrollers/index.js: line 11, col 32, Missing semicolon.\n\n1 error'); 
   });
 
 });
@@ -3028,7 +3028,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.731a2bcd"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.fd6d3a83"});
 }
 
 /* jshint ignore:end */
