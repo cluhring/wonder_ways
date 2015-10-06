@@ -791,7 +791,7 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
         var el5 = dom.createTextNode("\n        ");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("a");
-        dom.setAttribute(el5,"href","/California/1523");
+        dom.setAttribute(el5,"href","/California/1159");
         var el6 = dom.createElement("img");
         dom.setAttribute(el6,"src","assets/images/autumn-hike.jpg");
         dom.setAttribute(el6,"class","img-thumbnail");
@@ -828,7 +828,7 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
         var el5 = dom.createTextNode("\n        ");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("a");
-        dom.setAttribute(el5,"href","/Maine/7102");
+        dom.setAttribute(el5,"href","/Maine/5569");
         var el6 = dom.createElement("img");
         dom.setAttribute(el6,"src","assets/images/moss-hike.jpg");
         dom.setAttribute(el6,"class","img-thumbnail");
@@ -865,7 +865,7 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
         var el5 = dom.createTextNode("\n        ");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("a");
-        dom.setAttribute(el5,"href","/Oregon/12609");
+        dom.setAttribute(el5,"href","/Oregon/10226");
         var el6 = dom.createElement("img");
         dom.setAttribute(el6,"src","assets/images/cool-hike.jpg");
         dom.setAttribute(el6,"class","img-thumbnail");
@@ -902,7 +902,7 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
         var el5 = dom.createTextNode("\n        ");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("a");
-        dom.setAttribute(el5,"href","/Colorado/2873");
+        dom.setAttribute(el5,"href","/Colorado/2249");
         var el6 = dom.createElement("img");
         dom.setAttribute(el6,"src","assets/images/mountain-hike.jpg");
         dom.setAttribute(el6,"class","img-thumbnail");
@@ -3029,7 +3029,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.6a4b2c55"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.537134dc"});
 }
 
 /* jshint ignore:end */
