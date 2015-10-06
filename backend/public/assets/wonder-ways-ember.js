@@ -243,7 +243,7 @@ define('wonder-ways-ember/controllers/index', ['exports', 'ember'], function (ex
       },
       setStatePage: function setStatePage(state) {
         this.set("statePage", state);
-        location.href = "/" + state;
+        this.transitionToRoute("trails", state);
       } },
 
     searchTerm: "",
@@ -3029,7 +3029,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.66dd45f1"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.6a4b2c55"});
 }
 
 /* jshint ignore:end */
