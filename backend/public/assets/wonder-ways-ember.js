@@ -700,6 +700,182 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
   'use strict';
 
   exports['default'] = Ember.HTMLBars.template((function() {
+    var child0 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("          ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("img");
+          dom.setAttribute(el1,"src","assets/images/autumn-hike.jpg");
+          dom.setAttribute(el1,"class","img-thumbnail");
+          dom.setAttribute(el1,"height","300px");
+          dom.setAttribute(el1,"width","325px");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          return fragment;
+        }
+      };
+    }());
+    var child1 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("          ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("img");
+          dom.setAttribute(el1,"src","assets/images/moss-hike.jpg");
+          dom.setAttribute(el1,"class","img-thumbnail");
+          dom.setAttribute(el1,"height","300px");
+          dom.setAttribute(el1,"width","325px");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          return fragment;
+        }
+      };
+    }());
+    var child2 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("          ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("img");
+          dom.setAttribute(el1,"src","assets/images/cool-hike.jpg");
+          dom.setAttribute(el1,"class","img-thumbnail");
+          dom.setAttribute(el1,"height","300px");
+          dom.setAttribute(el1,"width","325px");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          return fragment;
+        }
+      };
+    }());
+    var child3 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("          ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("img");
+          dom.setAttribute(el1,"src","assets/images/mountain-hike.jpg");
+          dom.setAttribute(el1,"class","img-thumbnail");
+          dom.setAttribute(el1,"height","300px");
+          dom.setAttribute(el1,"width","325px");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement) {
+          var dom = env.dom;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          return fragment;
+        }
+      };
+    }());
     return {
       isHTMLBars: true,
       revision: "Ember@1.11.0",
@@ -788,18 +964,11 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("div");
         dom.setAttribute(el4,"class","col-md-3");
-        var el5 = dom.createTextNode("\n        ");
+        var el5 = dom.createTextNode("\n");
         dom.appendChild(el4, el5);
-        var el5 = dom.createElement("a");
-        dom.setAttribute(el5,"href","/California/1159");
-        var el6 = dom.createElement("img");
-        dom.setAttribute(el6,"src","assets/images/autumn-hike.jpg");
-        dom.setAttribute(el6,"class","img-thumbnail");
-        dom.setAttribute(el6,"height","300px");
-        dom.setAttribute(el6,"width","325px");
-        dom.appendChild(el5, el6);
+        var el5 = dom.createComment("");
         dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n        ");
+        var el5 = dom.createTextNode("        ");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("div");
         dom.setAttribute(el5,"class","pic-info");
@@ -825,18 +994,11 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("div");
         dom.setAttribute(el4,"class","col-md-3");
-        var el5 = dom.createTextNode("\n        ");
+        var el5 = dom.createTextNode("\n");
         dom.appendChild(el4, el5);
-        var el5 = dom.createElement("a");
-        dom.setAttribute(el5,"href","/Maine/5569");
-        var el6 = dom.createElement("img");
-        dom.setAttribute(el6,"src","assets/images/moss-hike.jpg");
-        dom.setAttribute(el6,"class","img-thumbnail");
-        dom.setAttribute(el6,"height","300px");
-        dom.setAttribute(el6,"width","325px");
-        dom.appendChild(el5, el6);
+        var el5 = dom.createComment("");
         dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n        ");
+        var el5 = dom.createTextNode("        ");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("div");
         dom.setAttribute(el5,"class","pic-info");
@@ -862,18 +1024,11 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("div");
         dom.setAttribute(el4,"class","col-md-3");
-        var el5 = dom.createTextNode("\n        ");
+        var el5 = dom.createTextNode("\n");
         dom.appendChild(el4, el5);
-        var el5 = dom.createElement("a");
-        dom.setAttribute(el5,"href","/Oregon/10226");
-        var el6 = dom.createElement("img");
-        dom.setAttribute(el6,"src","assets/images/cool-hike.jpg");
-        dom.setAttribute(el6,"class","img-thumbnail");
-        dom.setAttribute(el6,"height","300px");
-        dom.setAttribute(el6,"width","325px");
-        dom.appendChild(el5, el6);
+        var el5 = dom.createComment("");
         dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n        ");
+        var el5 = dom.createTextNode("        ");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("div");
         dom.setAttribute(el5,"class","pic-info");
@@ -899,18 +1054,11 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("div");
         dom.setAttribute(el4,"class","col-md-3");
-        var el5 = dom.createTextNode("\n        ");
+        var el5 = dom.createTextNode("\n");
         dom.appendChild(el4, el5);
-        var el5 = dom.createElement("a");
-        dom.setAttribute(el5,"href","/Colorado/2249");
-        var el6 = dom.createElement("img");
-        dom.setAttribute(el6,"src","assets/images/mountain-hike.jpg");
-        dom.setAttribute(el6,"class","img-thumbnail");
-        dom.setAttribute(el6,"height","300px");
-        dom.setAttribute(el6,"width","325px");
-        dom.appendChild(el5, el6);
+        var el5 = dom.createComment("");
         dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n        ");
+        var el5 = dom.createTextNode("        ");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("div");
         dom.setAttribute(el5,"class","pic-info");
@@ -1149,7 +1297,7 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
       },
       render: function render(context, env, contextualElement) {
         var dom = env.dom;
-        var hooks = env.hooks, element = hooks.element, inline = hooks.inline;
+        var hooks = env.hooks, element = hooks.element, block = hooks.block, inline = hooks.inline;
         dom.detectNamespace(contextualElement);
         var fragment;
         if (env.useFragmentCache && dom.canClone) {
@@ -1171,11 +1319,20 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
         var element1 = dom.childAt(element0, [7]);
         var element2 = dom.childAt(element0, [9]);
         var element3 = dom.childAt(element0, [11]);
-        var morph0 = dom.createMorphAt(dom.childAt(fragment, [4, 1]),1,1);
+        var element4 = dom.childAt(element0, [13, 1]);
+        var morph0 = dom.createMorphAt(dom.childAt(element4, [1]),1,1);
+        var morph1 = dom.createMorphAt(dom.childAt(element4, [3]),1,1);
+        var morph2 = dom.createMorphAt(dom.childAt(element4, [5]),1,1);
+        var morph3 = dom.createMorphAt(dom.childAt(element4, [7]),1,1);
+        var morph4 = dom.createMorphAt(dom.childAt(fragment, [4, 1]),1,1);
         element(env, element1, context, "action", ["indexFilter", ".featured"], {});
         element(env, element2, context, "action", ["indexFilter", ".mission"], {});
         element(env, element3, context, "action", ["indexFilter", ".news"], {});
-        inline(env, morph0, context, "us-map", [], {"selectedState": "setStatePage"});
+        block(env, morph0, context, "link-to", ["trail", "California", "1159"], {}, child0, null);
+        block(env, morph1, context, "link-to", ["trail", "Maine", "5569"], {}, child1, null);
+        block(env, morph2, context, "link-to", ["trail", "Oregon", "10226"], {}, child2, null);
+        block(env, morph3, context, "link-to", ["trail", "Colorado", "2249"], {}, child3, null);
+        inline(env, morph4, context, "us-map", [], {"selectedState": "setStatePage"});
         return fragment;
       }
     };
@@ -3029,7 +3186,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.537134dc"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.9d0e5dbf"});
 }
 
 /* jshint ignore:end */
