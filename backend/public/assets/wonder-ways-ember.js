@@ -183,7 +183,7 @@ define('wonder-ways-ember/components/us-map', ['exports', 'ember'], function (ex
           mouseout: resetHighlight,
           click: (function (e) {
             zoomToFeature(e);
-            this.set("selectedState", feature.properties.name);
+            this.sendAction("selectedState", feature.properties.name);
             // goToStatePage(feature.properties.name);
           }).bind(_this)
         });
@@ -241,12 +241,13 @@ define('wonder-ways-ember/controllers/index', ['exports', 'ember'], function (ex
         Ember['default'].$(".frontPage").hide();
         Ember['default'].$(type).show();
       },
-      goToStatePage: function goToStatePage(state) {
+      setStatePage: function setStatePage(state) {
+        this.set("statePage", state);
         location.href = "/" + state;
       } },
 
     searchTerm: "",
-    selectedState: "",
+    // selectedState: '',
     allStates: ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"] });
 
 });
@@ -1174,7 +1175,7 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
         element(env, element1, context, "action", ["indexFilter", ".featured"], {});
         element(env, element2, context, "action", ["indexFilter", ".mission"], {});
         element(env, element3, context, "action", ["indexFilter", ".news"], {});
-        inline(env, morph0, context, "us-map", [], {"goToStatePage": "selectedState"});
+        inline(env, morph0, context, "us-map", [], {"selectedState": "setStatePage"});
         return fragment;
       }
     };
@@ -2549,7 +2550,7 @@ define('wonder-ways-ember/tests/controllers/index.jshint', function () {
 
   module('JSHint - controllers');
   test('controllers/index.js should pass jshint', function() { 
-    ok(false, 'controllers/index.js should pass jshint.\ncontrollers/index.js: line 11, col 32, Missing semicolon.\n\n1 error'); 
+    ok(true, 'controllers/index.js should pass jshint.'); 
   });
 
 });
@@ -3028,7 +3029,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.fd6d3a83"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.66dd45f1"});
 }
 
 /* jshint ignore:end */
