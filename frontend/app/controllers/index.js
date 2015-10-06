@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
   },
   setStatePage: function(state) {
     this.set('statePage', state);
-    location.href = "/" + state;
+    this.transitionToRoute('trails', state);
   },
 
 },
