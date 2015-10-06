@@ -3,7 +3,6 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-
   map: null,
   classNames: ['us-map'],
 
@@ -117,11 +116,9 @@ export default Ember.Component.extend({
       map.fitBounds(e.target.getBounds());
     }
 
-    function goToStatePage(state) {
-      location.href = "/" + state
-      // router.transitionTo('trails', state)
-      // App.Router.router.transitionTo("/" + state);
-    }
+    // function goToStatePage(state) {
+    //   location.href = "/" + state
+    // }
 
     let onEachFeature = (feature, layer) => {
       layer.on({
@@ -130,7 +127,7 @@ export default Ember.Component.extend({
         click: function (e) {
           zoomToFeature(e);
           this.set('selectedState', feature.properties.name);
-          goToStatePage(feature.properties.name);
+          // goToStatePage(feature.properties.name);
         }.bind(this)
       });
     }
