@@ -126,7 +126,7 @@ export default Ember.Component.extend({
         mouseout: resetHighlight,
         click: function (e) {
           zoomToFeature(e);
-          this.set('selectedState', feature.properties.name);
+          this.sendAction('selectedState', feature.properties.name);
           // goToStatePage(feature.properties.name);
         }.bind(this)
       });
