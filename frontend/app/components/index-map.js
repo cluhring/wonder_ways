@@ -21,7 +21,7 @@ export default Ember.Component.extend({
           "geometry": {"type": "Point",
                        "coordinates": [trail.lng, trail.lat]},
           "properties": {"name": trail.name,
-                         "url": 'https://wonder-ways.herokuapp.com/' + trail.state + '/' + trail.trailId,
+                         "url": 'https://wonder-ways.herokuapp.com/' + trail.state + '/' + trail.id,
                          "marker-symbol": "park",
                          "marker-color": "#0C5CFE",
                          "marker-size": "large",
