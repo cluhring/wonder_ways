@@ -39,19 +39,14 @@
   </div>
   <div class="col-md-6">
     <div id="index-map" class="map">
-      {{index-map trails=model filteredTrails=filteredTrails}}
+      {{index-map trails=filteredTrails}}
     </div>
   </div>
 </div>
 
 <script>
 $(function () {
-  console.log("finding lookup", $("a[href='#lookUp']"));
-
   $(document).ready(function () {
-    console.log("finding lookup", $("a[href='#lookUp']"));
-
-
     $('a[href="#lookUp"]').on('click', function(event) {
         event.preventDefault();
         $('#search').addClass('open');

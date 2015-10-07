@@ -8,7 +8,7 @@ export default Ember.Component.extend({
   classNames: ['index-map'],
 
   didInsertElement: function () {
-    let trails = this.get('filteredTrails');
+    let trails = this.get('trails');
     L.mapbox.accessToken = 'pk.eyJ1IjoiY2x1aHJpbmciLCJhIjoiNWF2Z1l6ZyJ9.8peAq7kTQyvXShlVv1K82w';
 
     let map = L.mapbox.map(this.elementId, 'cluhring.lal7c6c3');
@@ -17,23 +17,43 @@ export default Ember.Component.extend({
     let points = function () {
       let output = [];
       trails.forEach(function(trail) {
-        console.log(trail);
         let point = { "type": "Feature",
-          "geometry": {"type": "Point", "coordinates": [trail.lng, trail.lat]},
-          "properties": {"marker-symbol": "park", "marker-color": "#0C5CFE", "marker-size": "large"}
+          "geometry": {"type": "Point",
+                       "coordinates": [trail.lng, trail.lat]},
+          "properties": {"name": trail.name,
+                         "url": 'https://wonder-ways.herokuapp.com/' + trail.state + '/' + trail.trailId,
+                         "marker-symbol": "park",
+                         "marker-color": "#0C5CFE",
+                         "marker-size": "large",
+          }
         };
         output.push(point);
       });
       return output
     };
 
-    // map.fitBounds(trails);
     map.setView([trails[0].lat, trails[0].lng], 6);
 
     var pointSet = { "type": "FeatureCollection",
       "features": points()
     };
 
-var myLayer = L.mapbox.featureLayer(pointSet).addTo(map);
-}
+    var myLayer = L.mapbox.featureLayer().addTo(map);
+
+    myLayer.on('layeradd', function(e) {
+        var marker = e.layer,
+            feature = marker.feature;
+
+        var popupContent =  '<a target="_blank" class="popup" href="' + feature.properties.url + '">' +
+                                feature.properties.name +
+                            '</a>';
+
+        marker.bindPopup(popupContent,{
+            closeButton: false,
+            minWidth: 320
+        });
+    });
+
+    myLayer.setGeoJSON(pointSet);
+  }
 });
