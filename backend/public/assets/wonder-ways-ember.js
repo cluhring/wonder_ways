@@ -31,7 +31,7 @@ define('wonder-ways-ember/components/index-map', ['exports', 'ember'], function 
     classNames: ["index-map"],
 
     didInsertElement: function didInsertElement() {
-      var trails = this.get("filteredTrails");
+      var trails = this.get("trails");
       L.mapbox.accessToken = "pk.eyJ1IjoiY2x1aHJpbmciLCJhIjoiNWF2Z1l6ZyJ9.8peAq7kTQyvXShlVv1K82w";
 
       var map = L.mapbox.map(this.elementId, "cluhring.lal7c6c3");
@@ -40,24 +40,41 @@ define('wonder-ways-ember/components/index-map', ['exports', 'ember'], function 
       var points = function points() {
         var output = [];
         trails.forEach(function (trail) {
-          console.log(trail);
           var point = { type: "Feature",
-            geometry: { type: "Point", coordinates: [trail.lng, trail.lat] },
-            properties: { "marker-symbol": "park", "marker-color": "#0C5CFE", "marker-size": "large" }
+            geometry: { type: "Point",
+              coordinates: [trail.lng, trail.lat] },
+            properties: { name: trail.name,
+              url: "https://wonder-ways.herokuapp.com/" + trail.state + "/" + trail.trailId,
+              "marker-symbol": "park",
+              "marker-color": "#0C5CFE",
+              "marker-size": "large" }
           };
           output.push(point);
         });
         return output;
       };
 
-      // map.fitBounds(trails);
       map.setView([trails[0].lat, trails[0].lng], 6);
 
       var pointSet = { type: "FeatureCollection",
         features: points()
       };
 
-      var myLayer = L.mapbox.featureLayer(pointSet).addTo(map);
+      var myLayer = L.mapbox.featureLayer().addTo(map);
+
+      myLayer.on("layeradd", function (e) {
+        var marker = e.layer,
+            feature = marker.feature;
+
+        var popupContent = "<a target=\"_blank\" class=\"popup\" href=\"" + feature.properties.url + "\">" + feature.properties.name + "</a>";
+
+        marker.bindPopup(popupContent, {
+          closeButton: false,
+          minWidth: 320
+        });
+      });
+
+      myLayer.setGeoJSON(pointSet);
     }
   });
 
@@ -2767,7 +2784,7 @@ define('wonder-ways-ember/templates/trails/index', ['exports'], function (export
         var el1 = dom.createTextNode("\n\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("script");
-        var el2 = dom.createTextNode("\n$(function () {\n  console.log(\"finding lookup\", $(\"a[href='#lookUp']\"));\n\n  $(document).ready(function () {\n    console.log(\"finding lookup\", $(\"a[href='#lookUp']\"));\n\n\n    $('a[href=\"#lookUp\"]').on('click', function(event) {\n        event.preventDefault();\n        $('#search').addClass('open');\n        $('#search > form > input[type=\"search\"]').focus();\n    });\n\n    $('#search, #search button.close').on('click keyup', function(event) {\n        if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {\n            $(this).removeClass('open');\n        }\n    });\n  });\n});\n");
+        var el2 = dom.createTextNode("\n$(function () {\n  $(document).ready(function () {\n    $('a[href=\"#lookUp\"]').on('click', function(event) {\n        event.preventDefault();\n        $('#search').addClass('open');\n        $('#search > form > input[type=\"search\"]').focus();\n    });\n\n    $('#search, #search button.close').on('click keyup', function(event) {\n        if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {\n            $(this).removeClass('open');\n        }\n    });\n  });\n});\n");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
@@ -2807,7 +2824,7 @@ define('wonder-ways-ember/templates/trails/index', ['exports'], function (export
         inline(env, morph2, context, "input", [], {"type": "search", "value": get(env, context, "searchTerm"), "placeholder": "Enter Keyword(s)", "autocomplete": "off"});
         block(env, morph3, context, "each", [get(env, context, "allStates")], {}, child2, null);
         block(env, morph4, context, "each", [get(env, context, "filteredTrails")], {}, child3, null);
-        inline(env, morph5, context, "index-map", [], {"trails": get(env, context, "model"), "filteredTrails": get(env, context, "filteredTrails")});
+        inline(env, morph5, context, "index-map", [], {"trails": get(env, context, "filteredTrails")});
         return fragment;
       }
     };
@@ -2830,7 +2847,7 @@ define('wonder-ways-ember/tests/components/index-map.jshint', function () {
 
   module('JSHint - components');
   test('components/index-map.js should pass jshint', function() { 
-    ok(false, 'components/index-map.js should pass jshint.\ncomponents/index-map.js: line 27, col 20, Missing semicolon.\ncomponents/index-map.js: line 37, col 5, \'myLayer\' is defined but never used.\n\n2 errors'); 
+    ok(false, 'components/index-map.js should pass jshint.\ncomponents/index-map.js: line 32, col 20, Missing semicolon.\n\n1 error'); 
   });
 
 });
@@ -3349,7 +3366,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.30c7984c"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.8d9581bb"});
 }
 
 /* jshint ignore:end */
