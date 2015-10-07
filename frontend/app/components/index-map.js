@@ -8,7 +8,7 @@ export default Ember.Component.extend({
   classNames: ['index-map'],
 
   didInsertElement: function () {
-    let trails = this.get('trails');
+    let trails = this.get('filteredTrails');
     L.mapbox.accessToken = 'pk.eyJ1IjoiY2x1aHJpbmciLCJhIjoiNWF2Z1l6ZyJ9.8peAq7kTQyvXShlVv1K82w';
 
     let map = L.mapbox.map(this.elementId, 'cluhring.lal7c6c3');
@@ -32,7 +32,7 @@ export default Ember.Component.extend({
     };
 
     // map.fitBounds(trails);
-    map.setView([trails[6].lat, trails[6].lng], 5);
+    map.setView([trails[0].lat, trails[0].lng], 5);
 
     var pointSet = { "type": "FeatureCollection",
       "features": points()
