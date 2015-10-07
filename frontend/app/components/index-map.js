@@ -14,10 +14,6 @@ export default Ember.Component.extend({
     let map = L.mapbox.map(this.elementId, 'cluhring.lal7c6c3');
     this.set('map', map);
 
-    // let lat = this.get('trail.lat');
-    //
-    // let lng = this.get('trail.lng');
-
     let points = function () {
       let output = [];
       trails.forEach(function(trail) {
@@ -32,7 +28,7 @@ export default Ember.Component.extend({
     };
 
     // map.fitBounds(trails);
-    map.setView([trails[0].lat, trails[0].lng], 5);
+    map.setView([trails[0].lat, trails[0].lng], 6);
 
     var pointSet = { "type": "FeatureCollection",
       "features": points()
