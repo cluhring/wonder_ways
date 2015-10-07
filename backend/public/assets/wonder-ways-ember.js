@@ -31,15 +31,11 @@ define('wonder-ways-ember/components/index-map', ['exports', 'ember'], function 
     classNames: ["index-map"],
 
     didInsertElement: function didInsertElement() {
-      var trails = this.get("trails");
+      var trails = this.get("filteredTrails");
       L.mapbox.accessToken = "pk.eyJ1IjoiY2x1aHJpbmciLCJhIjoiNWF2Z1l6ZyJ9.8peAq7kTQyvXShlVv1K82w";
 
       var map = L.mapbox.map(this.elementId, "cluhring.lal7c6c3");
       this.set("map", map);
-
-      // let lat = this.get('trail.lat');
-      //
-      // let lng = this.get('trail.lng');
 
       var points = function points() {
         var output = [];
@@ -55,7 +51,7 @@ define('wonder-ways-ember/components/index-map', ['exports', 'ember'], function 
       };
 
       // map.fitBounds(trails);
-      map.setView([trails[6].lat, trails[6].lng], 5);
+      map.setView([trails[0].lat, trails[0].lng], 6);
 
       var pointSet = { type: "FeatureCollection",
         features: points()
@@ -2477,7 +2473,7 @@ define('wonder-ways-ember/templates/trails/index', ['exports'], function (export
         hasRendered: false,
         build: function build(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("    ");
+          var el1 = dom.createTextNode("        ");
           dom.appendChild(el0, el1);
           var el1 = dom.createComment("");
           dom.appendChild(el0, el1);
@@ -2562,14 +2558,14 @@ define('wonder-ways-ember/templates/trails/index', ['exports'], function (export
         hasRendered: false,
         build: function build(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("      ");
+          var el1 = dom.createTextNode("        ");
           dom.appendChild(el0, el1);
           var el1 = dom.createElement("li");
           dom.setAttribute(el1,"class","state-results");
           var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
           dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n      ");
+          var el1 = dom.createTextNode("\n        ");
           dom.appendChild(el0, el1);
           var el1 = dom.createElement("li");
           dom.setAttribute(el1,"class","state-results-location");
@@ -2684,13 +2680,13 @@ define('wonder-ways-ember/templates/trails/index', ['exports'], function (export
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("div");
         dom.setAttribute(el2,"class","states-index");
-        var el3 = dom.createTextNode("\n  ");
+        var el3 = dom.createTextNode("\n    ");
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("h1");
         var el4 = dom.createTextNode("Trails by State");
         dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n  ");
+        var el3 = dom.createTextNode("\n    ");
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("div");
         dom.setAttribute(el3,"class","state-links");
@@ -2698,10 +2694,10 @@ define('wonder-ways-ember/templates/trails/index', ['exports'], function (export
         dom.appendChild(el3, el4);
         var el4 = dom.createComment("");
         dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("  ");
+        var el4 = dom.createTextNode("    ");
         dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n");
+        var el3 = dom.createTextNode("\n  ");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
@@ -2746,11 +2742,11 @@ define('wonder-ways-ember/templates/trails/index', ['exports'], function (export
         var el3 = dom.createTextNode("\n  ");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
-        var el2 = dom.createTextNode("\n");
+        var el2 = dom.createTextNode("\n  ");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("div");
         dom.setAttribute(el2,"class","col-md-6");
-        var el3 = dom.createTextNode("\n  ");
+        var el3 = dom.createTextNode("\n    ");
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("div");
         dom.setAttribute(el3,"id","index-map");
@@ -2811,7 +2807,7 @@ define('wonder-ways-ember/templates/trails/index', ['exports'], function (export
         inline(env, morph2, context, "input", [], {"type": "search", "value": get(env, context, "searchTerm"), "placeholder": "Enter Keyword(s)", "autocomplete": "off"});
         block(env, morph3, context, "each", [get(env, context, "allStates")], {}, child2, null);
         block(env, morph4, context, "each", [get(env, context, "filteredTrails")], {}, child3, null);
-        inline(env, morph5, context, "index-map", [], {"trails": get(env, context, "model")});
+        inline(env, morph5, context, "index-map", [], {"trails": get(env, context, "model"), "filteredTrails": get(env, context, "filteredTrails")});
         return fragment;
       }
     };
@@ -2834,7 +2830,7 @@ define('wonder-ways-ember/tests/components/index-map.jshint', function () {
 
   module('JSHint - components');
   test('components/index-map.js should pass jshint', function() { 
-    ok(false, 'components/index-map.js should pass jshint.\ncomponents/index-map.js: line 31, col 20, Missing semicolon.\ncomponents/index-map.js: line 41, col 5, \'myLayer\' is defined but never used.\n\n2 errors'); 
+    ok(false, 'components/index-map.js should pass jshint.\ncomponents/index-map.js: line 27, col 20, Missing semicolon.\ncomponents/index-map.js: line 37, col 5, \'myLayer\' is defined but never used.\n\n2 errors'); 
   });
 
 });
@@ -3353,7 +3349,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.39965856"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.30c7984c"});
 }
 
 /* jshint ignore:end */
