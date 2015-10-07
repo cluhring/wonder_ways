@@ -11,7 +11,6 @@ export default Ember.Controller.extend({
     this.set('statePage', state);
     this.transitionToRoute('trails', state);
   },
-
 },
 
   searchTerm: '',
