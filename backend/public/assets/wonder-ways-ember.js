@@ -44,7 +44,7 @@ define('wonder-ways-ember/components/index-map', ['exports', 'ember'], function 
             geometry: { type: "Point",
               coordinates: [trail.lng, trail.lat] },
             properties: { name: trail.name,
-              url: "https://wonder-ways.herokuapp.com/" + trail.state + "/" + trail.trailId,
+              url: "https://wonder-ways.herokuapp.com/" + trail.state + "/" + trail.id,
               "marker-symbol": "park",
               "marker-color": "#0C5CFE",
               "marker-size": "large" }
@@ -3366,7 +3366,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.8d9581bb"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.8f74d660"});
 }
 
 /* jshint ignore:end */
