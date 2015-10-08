@@ -68,7 +68,7 @@ define('wonder-ways-ember/components/index-map', ['exports', 'ember'], function 
         var marker = e.layer,
             feature = marker.feature;
 
-        var popupContent = "<a target='_blank' {{bindAttrhref='" + feature.properties.url + "'}}>" + feature.properties.name + "</a>";
+        var popupContent = "<a target='_blank' {{bindAttr href='" + feature.properties.url + "'}}>" + feature.properties.name + "</a>";
         // "<div target='_blank' class='popup'> {{#link-to 'trail' '" +
         // feature.properties.state + "' '" +
         // feature.properties.trail_id + "'}}{{" +
@@ -3372,7 +3372,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.b3bf7f40"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.6b0084a0"});
 }
 
 /* jshint ignore:end */
