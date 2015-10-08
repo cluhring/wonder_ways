@@ -69,7 +69,7 @@ define('wonder-ways-ember/components/index-map', ['exports', 'ember'], function 
         var marker = e.layer,
             feature = marker.feature;
 
-        var popupContent = "<a href='" + feature.properties.url + "' {{action 'goToTrailPage' " + feature.properties.trail_id + " on='click'}}>" + feature.properties.name + "</a>";
+        var popupContent = "<a href='#'" + " {{action 'goToTrailPage' " + feature.properties.trail_id + " on='click'}}>" + feature.properties.name + "</a>";
 
         // feature.properties.url +
         // "'}}>" + feature.properties.name +
@@ -2858,7 +2858,7 @@ define('wonder-ways-ember/tests/components/index-map.jshint', function () {
 
   module('JSHint - components');
   test('components/index-map.js should pass jshint', function() { 
-    ok(false, 'components/index-map.js should pass jshint.\ncomponents/index-map.js: line 35, col 20, Missing semicolon.\ncomponents/index-map.js: line 54, col 61, Missing semicolon.\n\n2 errors'); 
+    ok(false, 'components/index-map.js should pass jshint.\ncomponents/index-map.js: line 35, col 20, Missing semicolon.\ncomponents/index-map.js: line 53, col 61, Missing semicolon.\n\n2 errors'); 
   });
 
 });
@@ -3377,7 +3377,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.3a70039b"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.74ba6d8c"});
 }
 
 /* jshint ignore:end */
