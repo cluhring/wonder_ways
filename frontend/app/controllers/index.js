@@ -3,15 +3,15 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 
   actions: {
-  indexFilter: function(type) {
-    Ember.$('.frontPage').hide();
-    Ember.$(type).show();
+    indexFilter: function(type) {
+      Ember.$('.frontPage').hide();
+      Ember.$(type).show();
+    },
+    setStatePage: function(state) {
+      this.set('statePage', state);
+      this.transitionToRoute('trails', state);
+    },
   },
-  setStatePage: function(state) {
-    this.set('statePage', state);
-    this.transitionToRoute('trails', state);
-  },
-},
 
   searchTerm: '',
   // selectedState: '',
