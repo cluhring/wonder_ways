@@ -45,10 +45,10 @@ export default Ember.Component.extend({
         var marker = e.layer,
             feature = marker.feature;
 
-        var popupContent =  '{{#link-to "trail" "' +
-                            feature.properties.state + '" "' +
-                            feature.properties.state_id + '"}}{{' +
-                            feature.properties.name + '}}{{/link-to}}';
+        var popupContent =  "<div target='_blank' class='popup'> {{#link-to 'trail' '" +
+                            feature.properties.state + "' '" +
+                            feature.properties.trail_id + "'}}{{" +
+                            feature.properties.name + "}}{{/link-to}}</div>";
 
         marker.bindPopup(popupContent,{
             closeButton: false,
