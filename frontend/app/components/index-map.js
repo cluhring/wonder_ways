@@ -46,7 +46,7 @@ export default Ember.Component.extend({
         var marker = e.layer,
             feature = marker.feature;
 
-        var popupContent =  "<a target='_blank' {{bindAttrhref='" +
+        var popupContent =  "<a target='_blank' {{bindAttr href='" +
                             feature.properties.url +
                             "'}}>" + feature.properties.name +
                             "</a>"
