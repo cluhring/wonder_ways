@@ -43,9 +43,12 @@ define('wonder-ways-ember/components/index-map', ['exports', 'ember'], function 
           var point = { type: "Feature",
             geometry: { type: "Point",
               coordinates: [trail.lng, trail.lat] },
-            properties: { name: trail.name,
+            properties: { title: trail.name,
+              description: trail.city + ", " + trail.state,
+              name: trail.name,
               url: "https://wonder-ways.herokuapp.com/",
               //  + trail.state + "/" + trail.id,
+              city: trail.city,
               state: trail.state,
               trail_id: trail.id,
               "marker-symbol": "park",
@@ -65,20 +68,21 @@ define('wonder-ways-ember/components/index-map', ['exports', 'ember'], function 
 
       var myLayer = L.mapbox.featureLayer().addTo(map);
 
-      myLayer.on("layeradd", function (e) {
-        var marker = e.layer,
-            feature = marker.feature;
-
-        var popupContent = "<a href='#'" + " {{action 'goToTrailPage' " + feature.properties.trail_id + " on='click'}}>" + feature.properties.name + "</a>";
-
-        // feature.properties.url +
-        // "'}}>" + feature.properties.name +
-        // "</a>"
-        marker.bindPopup(popupContent, {
-          closeButton: false,
-          minWidth: 320
-        });
-      });
+      // myLayer.on('layeradd', function(e) {
+      //     var marker = e.layer,
+      //         feature = marker.feature;
+      //
+      //     var popupContent =  "<a href='#'" +
+      //                         feature.properties.url +
+      //                         " {{action 'goToTrailPage' " +
+      //                         feature.properties.trail_id + " on='click'}}>" +
+      //                         feature.properties.name + "</a>"
+      //
+      //     marker.bindPopup(popupContent,{
+      //         closeButton: false,
+      //         minWidth: 320
+      //     });
+      // });
 
       myLayer.setGeoJSON(pointSet);
     }
@@ -347,10 +351,11 @@ define('wonder-ways-ember/controllers/trails/index', ['exports', 'ember'], funct
 
   exports['default'] = Ember['default'].Controller.extend({
     actions: {
-      goToTrailPage: function goToTrailPage(id) {
-        // this.set('trailPage', id);
+      setTrailPage: function setTrailPage(id) {
+        console.log(this);
         this.transitionToRoute("trail", id);
-      } },
+      }
+    },
 
     searchTerm: "",
     selectedState: "",
@@ -2835,7 +2840,7 @@ define('wonder-ways-ember/templates/trails/index', ['exports'], function (export
         inline(env, morph2, context, "input", [], {"type": "search", "value": get(env, context, "searchTerm"), "placeholder": "Enter Keyword(s)", "autocomplete": "off"});
         block(env, morph3, context, "each", [get(env, context, "allStates")], {}, child2, null);
         block(env, morph4, context, "each", [get(env, context, "filteredTrails")], {}, child3, null);
-        inline(env, morph5, context, "index-map", [], {"trails": get(env, context, "filteredTrails")});
+        inline(env, morph5, context, "index-map", [], {"action": "setTrailPage", "trails": get(env, context, "filteredTrails")});
         return fragment;
       }
     };
@@ -2858,7 +2863,7 @@ define('wonder-ways-ember/tests/components/index-map.jshint', function () {
 
   module('JSHint - components');
   test('components/index-map.js should pass jshint', function() { 
-    ok(false, 'components/index-map.js should pass jshint.\ncomponents/index-map.js: line 35, col 20, Missing semicolon.\ncomponents/index-map.js: line 53, col 61, Missing semicolon.\n\n2 errors'); 
+    ok(false, 'components/index-map.js should pass jshint.\ncomponents/index-map.js: line 38, col 20, Missing semicolon.\n\n1 error'); 
   });
 
 });
@@ -2918,7 +2923,7 @@ define('wonder-ways-ember/tests/controllers/trails/index.jshint', function () {
 
   module('JSHint - controllers/trails');
   test('controllers/trails/index.js should pass jshint', function() { 
-    ok(true, 'controllers/trails/index.js should pass jshint.'); 
+    ok(false, 'controllers/trails/index.js should pass jshint.\ncontrollers/trails/index.js: line 6, col 24, Missing semicolon.\n\n1 error'); 
   });
 
 });
@@ -3377,7 +3382,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.74ba6d8c"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.1b02615a"});
 }
 
 /* jshint ignore:end */
