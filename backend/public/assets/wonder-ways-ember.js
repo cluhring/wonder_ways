@@ -45,6 +45,8 @@ define('wonder-ways-ember/components/index-map', ['exports', 'ember'], function 
               coordinates: [trail.lng, trail.lat] },
             properties: { name: trail.name,
               url: "https://wonder-ways.herokuapp.com/" + trail.state + "/" + trail.id,
+              state: trail.state,
+              trail_id: trail.id,
               "marker-symbol": "park",
               "marker-color": "#0C5CFE",
               "marker-size": "large" }
@@ -66,7 +68,11 @@ define('wonder-ways-ember/components/index-map', ['exports', 'ember'], function 
         var marker = e.layer,
             feature = marker.feature;
 
-        var popupContent = "<a target=\"_blank\" class=\"popup\" href=\"" + feature.properties.url + "\">" + feature.properties.name + "</a>";
+        var popupContent = "<a target='_blank' {{bindAttrhref='" + feature.properties.url + "'}}>" + feature.properties.name + "</a>";
+        // "<div target='_blank' class='popup'> {{#link-to 'trail' '" +
+        // feature.properties.state + "' '" +
+        // feature.properties.trail_id + "'}}{{" +
+        // feature.properties.name + "}}{{/link-to}}</div>";
 
         marker.bindPopup(popupContent, {
           closeButton: false,
@@ -2847,7 +2853,7 @@ define('wonder-ways-ember/tests/components/index-map.jshint', function () {
 
   module('JSHint - components');
   test('components/index-map.js should pass jshint', function() { 
-    ok(false, 'components/index-map.js should pass jshint.\ncomponents/index-map.js: line 32, col 20, Missing semicolon.\n\n1 error'); 
+    ok(false, 'components/index-map.js should pass jshint.\ncomponents/index-map.js: line 34, col 20, Missing semicolon.\ncomponents/index-map.js: line 52, col 35, Missing semicolon.\n\n2 errors'); 
   });
 
 });
@@ -3366,7 +3372,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.8f74d660"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.b3bf7f40"});
 }
 
 /* jshint ignore:end */
