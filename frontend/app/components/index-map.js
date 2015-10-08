@@ -20,9 +20,12 @@ export default Ember.Component.extend({
         let point = { "type": "Feature",
           "geometry": {"type": "Point",
                        "coordinates": [trail.lng, trail.lat]},
-          "properties": {"name": trail.name,
-                         "url": "https://wonder-ways.herokuapp.com/",
+          "properties": {"title": trail.name,
+                        "description": trail.city + ", " + trail.state,
+                        "name": trail.name,
+                        "url": "https://wonder-ways.herokuapp.com/",
                         //  + trail.state + "/" + trail.id,
+                         "city": trail.city,
                          "state": trail.state,
                          "trail_id": trail.id,
                          "marker-symbol": "park",
@@ -43,24 +46,21 @@ export default Ember.Component.extend({
 
     var myLayer = L.mapbox.featureLayer().addTo(map);
 
-    myLayer.on('layeradd', function(e) {
-        var marker = e.layer,
-            feature = marker.feature;
-
-        var popupContent =  "<a href='#'" +
-                            " {{action 'goToTrailPage' " +
-                            feature.properties.trail_id + " on='click'}}>" +
-                            feature.properties.name + "</a>"
-
-
-                            // feature.properties.url +
-                            // "'}}>" + feature.properties.name +
-                            // "</a>"
-        marker.bindPopup(popupContent,{
-            closeButton: false,
-            minWidth: 320
-        });
-    });
+    // myLayer.on('layeradd', function(e) {
+    //     var marker = e.layer,
+    //         feature = marker.feature;
+    //
+    //     var popupContent =  "<a href='#'" +
+    //                         feature.properties.url +
+    //                         " {{action 'goToTrailPage' " +
+    //                         feature.properties.trail_id + " on='click'}}>" +
+    //                         feature.properties.name + "</a>"
+    //
+    //     marker.bindPopup(popupContent,{
+    //         closeButton: false,
+    //         minWidth: 320
+    //     });
+    // });
 
     myLayer.setGeoJSON(pointSet);
   }

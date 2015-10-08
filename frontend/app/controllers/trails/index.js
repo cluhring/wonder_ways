@@ -2,10 +2,10 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   actions: {
-    goToTrailPage: function(id) {
-      // this.set('trailPage', id);
+    setTrailPage: function(id) {
+      console.log(this)
       this.transitionToRoute('trail', id);
-    },
+    }
   },
 
   searchTerm: '',
