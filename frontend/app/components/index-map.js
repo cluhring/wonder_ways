@@ -21,7 +21,8 @@ export default Ember.Component.extend({
           "geometry": {"type": "Point",
                        "coordinates": [trail.lng, trail.lat]},
           "properties": {"name": trail.name,
-                         "url": 'https://wonder-ways.herokuapp.com/' + trail.state + '/' + trail.id,
+                         "state": trail.state,
+                         "trail_id": trail.id,
                          "marker-symbol": "park",
                          "marker-color": "#0C5CFE",
                          "marker-size": "large",
@@ -44,9 +45,10 @@ export default Ember.Component.extend({
         var marker = e.layer,
             feature = marker.feature;
 
-        var popupContent =  '<a target="_blank" class="popup" href="' + feature.properties.url + '">' +
-                                feature.properties.name +
-                            '</a>';
+        var popupContent =  '{{#link-to "trail" "' +
+                            feature.properties.state + '" "' +
+                            feature.properties.state_id + '"}}{{' +
+                            feature.properties.name + '}}{{/link-to}}';
 
         marker.bindPopup(popupContent,{
             closeButton: false,
