@@ -47,9 +47,8 @@ export default Ember.Component.extend({
         var marker = e.layer,
             feature = marker.feature;
 
-        var popupContent =  "<a href='" +
-                            feature.properties.url +
-                            "' {{action 'goToTrailPage' " +
+        var popupContent =  "<a href='#'" +
+                            " {{action 'goToTrailPage' " +
                             feature.properties.trail_id + " on='click'}}>" +
                             feature.properties.name + "</a>"
 
