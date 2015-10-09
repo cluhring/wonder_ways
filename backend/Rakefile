@@ -7,7 +7,7 @@ Rails.application.load_tasks
 
 task :populate_trails, [] => :environment do
   Rails.env = "development"
-  TrailsService.new.get_all_trails(1000)
+  TrailsService.new.get_all_trails(50)
 end
 
 task :populate_trail_info, [] => :environment do
