@@ -27,15 +27,15 @@ export default Ember.Component.extend({
       { "type": "Feature",
       "geometry": {"type": "Point",
                    "coordinates": [lng, lat]},
-      "properties": {"name": trail.name,
+      "properties": {"title": trail.name,
                      "description": trail.city + ", " + trail.state,
                      "marker-symbol": "park",
-                     "marker-color": "#0C5CFE",
+                     "marker-color": "#BA1A1A",
                      "marker-size": "large"}
        }]
     };
 
-    // map.locate({setView: false, maxZoom: 16});
+    map.locate({setView: true, maxZoom: 16});
 
     function onLocationFound(e) {
       var radius = e.accuracy / 2;
@@ -54,14 +54,18 @@ export default Ember.Component.extend({
       }).addTo(map);
 
       L.marker(e.latlng).addTo(map)
-      .bindPopup("You are here").openPopup();
+      .bindPopup("You are here")
+      .openPopup()
+      .setIcon(L.mapbox.marker.icon({"marker-color": "#BA1A1A",
+                                     "marker-symbol": "toilets",
+                                     "marker-size": "large",
+      }));
 
       L.circle(e.latlng, radius).addTo(map);
     }
 
     map.on('locationfound', onLocationFound);
 
-    var myLayer = L.mapbox.featureLayer().addTo(map);
-    // var myLayer = L.mapbox.featureLayer(points).addTo(map);
+    var myLayer = L.mapbox.featureLayer(points).addTo(map);
   }
 });
