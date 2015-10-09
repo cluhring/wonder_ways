@@ -140,37 +140,40 @@ define('wonder-ways-ember/components/trail-map', ['exports', 'ember'], function 
       var map = L.mapbox.map(this.elementId, "cluhring.lal7c6c3");
       this.set("map", map);
 
+      var trail = this.get("trail");
+
       var lat = this.get("trail.lat");
 
       var lng = this.get("trail.lng");
 
-      // map.setView([lat, lng], 15);
+      map.setView([lat, lng], 15);
 
-      // var points = { "type": "FeatureCollection",
-      // "features": [
-      //   { "type": "Feature",
-      //   "geometry": {"type": "Point", "coordinates": [lng, lat]},
-      //   "properties": {"marker-symbol": "park", "marker-color": "#0C5CFE", "marker-size": "large"}
-      //    }]
-      // };
+      var points = { type: "FeatureCollection",
+        features: [{ type: "Feature",
+          geometry: { type: "Point",
+            coordinates: [lng, lat] },
+          properties: { name: trail.name,
+            description: trail.city + ", " + trail.state,
+            "marker-symbol": "park",
+            "marker-color": "#0C5CFE",
+            "marker-size": "large" }
+        }]
+      };
 
-      map.locate({ setView: false, maxZoom: 16 });
+      // map.locate({setView: false, maxZoom: 16});
 
       function onLocationFound(e) {
         var radius = e.accuracy / 2;
         var current_lat = e.latlng.lat;
         var current_long = e.latlng.lng;
-        // var ctrl = L.Routing.control({
-        //   waypoints: [
-        //     L.latLng (e.latlng.lat, e.latlng.lng),
-        //     L.latLng (lat, lng)
-        //   ],
-        //   routeWhileDragging: true,
-        //   draggableWaypoints: true,
-        //   autoRoute: true,
-        //   fitSelectedRoutes: 'smart',
-        //   geocoder: L.Control.Geocoder.nominatim()
-        // }).addTo(map);
+        var ctrl = L.Routing.control({
+          waypoints: [L.latLng(current_lat, current_long), L.latLng(lat, lng)],
+          routeWhileDragging: true,
+          draggableWaypoints: true,
+          autoRoute: true,
+          fitSelectedRoutes: "smart",
+          geocoder: L.Control.Geocoder.nominatim()
+        }).addTo(map);
 
         L.marker(e.latlng).addTo(map).bindPopup("You are here").openPopup();
 
@@ -2933,7 +2936,7 @@ define('wonder-ways-ember/tests/components/trail-map.jshint', function () {
 
   module('JSHint - components');
   test('components/trail-map.js should pass jshint', function() { 
-    ok(false, 'components/trail-map.js should pass jshint.\ncomponents/trail-map.js: line 17, col 12, \'lat\' is defined but never used.\ncomponents/trail-map.js: line 19, col 12, \'lng\' is defined but never used.\ncomponents/trail-map.js: line 57, col 9, \'myLayer\' is defined but never used.\ncomponents/trail-map.js: line 35, col 11, \'current_lat\' is defined but never used.\ncomponents/trail-map.js: line 36, col 11, \'current_long\' is defined but never used.\n\n5 errors'); 
+    ok(false, 'components/trail-map.js should pass jshint.\ncomponents/trail-map.js: line 25, col 9, \'points\' is defined but never used.\ncomponents/trail-map.js: line 64, col 9, \'myLayer\' is defined but never used.\ncomponents/trail-map.js: line 44, col 11, \'ctrl\' is defined but never used.\n\n3 errors'); 
   });
 
 });
@@ -3432,7 +3435,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.95160f5b"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.86890f1c"});
 }
 
 /* jshint ignore:end */
