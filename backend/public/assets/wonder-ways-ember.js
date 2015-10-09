@@ -152,15 +152,15 @@ define('wonder-ways-ember/components/trail-map', ['exports', 'ember'], function 
         features: [{ type: "Feature",
           geometry: { type: "Point",
             coordinates: [lng, lat] },
-          properties: { name: trail.name,
+          properties: { title: trail.name,
             description: trail.city + ", " + trail.state,
             "marker-symbol": "park",
-            "marker-color": "#0C5CFE",
+            "marker-color": "#BA1A1A",
             "marker-size": "large" }
         }]
       };
 
-      // map.locate({setView: false, maxZoom: 16});
+      map.locate({ setView: true, maxZoom: 16 });
 
       function onLocationFound(e) {
         var radius = e.accuracy / 2;
@@ -175,15 +175,16 @@ define('wonder-ways-ember/components/trail-map', ['exports', 'ember'], function 
           geocoder: L.Control.Geocoder.nominatim()
         }).addTo(map);
 
-        L.marker(e.latlng).addTo(map).bindPopup("You are here").openPopup();
+        L.marker(e.latlng).addTo(map).bindPopup("You are here").openPopup().setIcon(L.mapbox.marker.icon({ "marker-color": "#BA1A1A",
+          "marker-symbol": "toilets",
+          "marker-size": "large" }));
 
         L.circle(e.latlng, radius).addTo(map);
       }
 
       map.on("locationfound", onLocationFound);
 
-      var myLayer = L.mapbox.featureLayer().addTo(map);
-      // var myLayer = L.mapbox.featureLayer(points).addTo(map);
+      var myLayer = L.mapbox.featureLayer(points).addTo(map);
     }
   });
 
@@ -2893,7 +2894,7 @@ define('wonder-ways-ember/templates/trails/index', ['exports'], function (export
         inline(env, morph2, context, "input", [], {"type": "search", "value": get(env, context, "searchTerm"), "placeholder": "Enter Keyword(s)", "autocomplete": "off"});
         block(env, morph3, context, "each", [get(env, context, "allStates")], {}, child2, null);
         block(env, morph4, context, "each", [get(env, context, "filteredTrails")], {}, child3, null);
-        inline(env, morph5, context, "index-map", [], {"action": "setTrailPage", "trails": get(env, context, "filteredTrails")});
+        inline(env, morph5, context, "index-map", [], {"action": "setTrailPage", "trails": get(env, context, "model")});
         return fragment;
       }
     };
@@ -2936,7 +2937,7 @@ define('wonder-ways-ember/tests/components/trail-map.jshint', function () {
 
   module('JSHint - components');
   test('components/trail-map.js should pass jshint', function() { 
-    ok(false, 'components/trail-map.js should pass jshint.\ncomponents/trail-map.js: line 25, col 9, \'points\' is defined but never used.\ncomponents/trail-map.js: line 64, col 9, \'myLayer\' is defined but never used.\ncomponents/trail-map.js: line 44, col 11, \'ctrl\' is defined but never used.\n\n3 errors'); 
+    ok(false, 'components/trail-map.js should pass jshint.\ncomponents/trail-map.js: line 69, col 9, \'myLayer\' is defined but never used.\ncomponents/trail-map.js: line 44, col 11, \'ctrl\' is defined but never used.\n\n2 errors'); 
   });
 
 });
@@ -3435,7 +3436,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.90d9c8b4"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.bfeebbbe"});
 }
 
 /* jshint ignore:end */
