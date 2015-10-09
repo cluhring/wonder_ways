@@ -166,14 +166,17 @@ define('wonder-ways-ember/components/trail-map', ['exports', 'ember'], function 
         var radius = e.accuracy / 2;
         var current_lat = e.latlng.lat;
         var current_long = e.latlng.lng;
-        var ctrl = L.Routing.control({
-          waypoints: [L.latLng(current_lat, current_long), L.latLng(lat, lng)],
-          routeWhileDragging: true,
-          draggableWaypoints: true,
-          autoRoute: true,
-          fitSelectedRoutes: "smart",
-          geocoder: L.Control.Geocoder.nominatim()
-        }).addTo(map);
+        // var ctrl = L.Routing.control({
+        //   waypoints: [
+        //     L.latLng (current_lat, current_long),
+        //     L.latLng (lat, lng)
+        //   ],
+        //   routeWhileDragging: true,
+        //   draggableWaypoints: true,
+        //   autoRoute: true,
+        //   fitSelectedRoutes: 'smart',
+        //   geocoder: L.Control.Geocoder.nominatim()
+        // }).addTo(map);
 
         L.marker(e.latlng).addTo(map).bindPopup("You are here").openPopup().setIcon(L.mapbox.marker.icon({ "marker-color": "#BA1A1A",
           "marker-symbol": "toilets",
@@ -2937,7 +2940,7 @@ define('wonder-ways-ember/tests/components/trail-map.jshint', function () {
 
   module('JSHint - components');
   test('components/trail-map.js should pass jshint', function() { 
-    ok(false, 'components/trail-map.js should pass jshint.\ncomponents/trail-map.js: line 69, col 9, \'myLayer\' is defined but never used.\ncomponents/trail-map.js: line 44, col 11, \'ctrl\' is defined but never used.\n\n2 errors'); 
+    ok(false, 'components/trail-map.js should pass jshint.\ncomponents/trail-map.js: line 69, col 9, \'myLayer\' is defined but never used.\ncomponents/trail-map.js: line 42, col 11, \'current_lat\' is defined but never used.\ncomponents/trail-map.js: line 43, col 11, \'current_long\' is defined but never used.\n\n3 errors'); 
   });
 
 });
@@ -3436,7 +3439,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.bfeebbbe"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.107eae47"});
 }
 
 /* jshint ignore:end */
