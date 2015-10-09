@@ -20,11 +20,15 @@ export default Ember.Component.extend({
         let point = { "type": "Feature",
           "geometry": {"type": "Point",
                        "coordinates": [trail.lng, trail.lat]},
-          "properties": {"title": trail.name,
-                        "description": trail.city + ", " + trail.state,
-                        "name": trail.name,
-                        "url": "https://wonder-ways.herokuapp.com/",
-                        //  + trail.state + "/" + trail.id,
+          "properties": {"name": trail.name,
+                         "title": trail.name,
+                        //  "title": "<div>{{#link-to 'trail' action='setTrailPage' actionParam='" +
+                        //            trail.id +
+                        //            "'}}{{" +
+                        //            trail.name +
+                        //            "}}{{/link-to}}</div>",
+                         "description": trail.city + ", " + trail.state,
+                         "url": "https://wonder-ways.herokuapp.com/" + trail.state + "/" + trail.id,
                          "city": trail.city,
                          "state": trail.state,
                          "trail_id": trail.id,
@@ -45,6 +49,26 @@ export default Ember.Component.extend({
     };
 
     var myLayer = L.mapbox.featureLayer().addTo(map);
+
+    // myLayer.on('layeradd', function(e) {
+    //     var marker = e.layer,
+    //         feature = marker.feature;
+    //
+    //     var popupContent =
+    //                         // "<a href='" +
+    //                         // feature.properties.url +
+    //                         // "' "
+    //                         "<a>{{#link-to 'trail' '" +
+    //                         feature.properties.state + "' '" +
+    //                         feature.properties.trail_id +
+    //                         "'}}{{" + feature.properties.name +
+    //                         "}}{{/link-to}}</a>";
+    //
+    //     marker.bindPopup(popupContent,{
+    //         closeButton: false,
+    //         minWidth: 320
+    //     });
+    // });
 
     // myLayer.on('layeradd', function(e) {
     //     var marker = e.layer,

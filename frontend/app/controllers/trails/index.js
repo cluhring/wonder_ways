@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   actions: {
     setTrailPage: function(id) {
-      console.log(this)
       this.transitionToRoute('trail', id);
     }
   },
