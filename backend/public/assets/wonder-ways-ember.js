@@ -43,11 +43,15 @@ define('wonder-ways-ember/components/index-map', ['exports', 'ember'], function 
           var point = { type: "Feature",
             geometry: { type: "Point",
               coordinates: [trail.lng, trail.lat] },
-            properties: { title: trail.name,
+            properties: { name: trail.name,
+              title: trail.name,
+              //  "title": "<div>{{#link-to 'trail' action='setTrailPage' actionParam='" +
+              //            trail.id +
+              //            "'}}{{" +
+              //            trail.name +
+              //            "}}{{/link-to}}</div>",
               description: trail.city + ", " + trail.state,
-              name: trail.name,
-              url: "https://wonder-ways.herokuapp.com/",
-              //  + trail.state + "/" + trail.id,
+              url: "https://wonder-ways.herokuapp.com/" + trail.state + "/" + trail.id,
               city: trail.city,
               state: trail.state,
               trail_id: trail.id,
@@ -67,6 +71,26 @@ define('wonder-ways-ember/components/index-map', ['exports', 'ember'], function 
       };
 
       var myLayer = L.mapbox.featureLayer().addTo(map);
+
+      // myLayer.on('layeradd', function(e) {
+      //     var marker = e.layer,
+      //         feature = marker.feature;
+      //
+      //     var popupContent =
+      //                         // "<a href='" +
+      //                         // feature.properties.url +
+      //                         // "' "
+      //                         "<a>{{#link-to 'trail' '" +
+      //                         feature.properties.state + "' '" +
+      //                         feature.properties.trail_id +
+      //                         "'}}{{" + feature.properties.name +
+      //                         "}}{{/link-to}}</a>";
+      //
+      //     marker.bindPopup(popupContent,{
+      //         closeButton: false,
+      //         minWidth: 320
+      //     });
+      // });
 
       // myLayer.on('layeradd', function(e) {
       //     var marker = e.layer,
@@ -352,7 +376,6 @@ define('wonder-ways-ember/controllers/trails/index', ['exports', 'ember'], funct
   exports['default'] = Ember['default'].Controller.extend({
     actions: {
       setTrailPage: function setTrailPage(id) {
-        console.log(this);
         this.transitionToRoute("trail", id);
       }
     },
@@ -2863,7 +2886,7 @@ define('wonder-ways-ember/tests/components/index-map.jshint', function () {
 
   module('JSHint - components');
   test('components/index-map.js should pass jshint', function() { 
-    ok(false, 'components/index-map.js should pass jshint.\ncomponents/index-map.js: line 38, col 20, Missing semicolon.\n\n1 error'); 
+    ok(false, 'components/index-map.js should pass jshint.\ncomponents/index-map.js: line 42, col 20, Missing semicolon.\n\n1 error'); 
   });
 
 });
@@ -2923,7 +2946,7 @@ define('wonder-ways-ember/tests/controllers/trails/index.jshint', function () {
 
   module('JSHint - controllers/trails');
   test('controllers/trails/index.js should pass jshint', function() { 
-    ok(false, 'controllers/trails/index.js should pass jshint.\ncontrollers/trails/index.js: line 6, col 24, Missing semicolon.\n\n1 error'); 
+    ok(true, 'controllers/trails/index.js should pass jshint.'); 
   });
 
 });
@@ -3382,7 +3405,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.1b02615a"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.690d0b01"});
 }
 
 /* jshint ignore:end */
