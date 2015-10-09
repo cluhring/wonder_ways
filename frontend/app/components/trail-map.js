@@ -14,6 +14,8 @@ export default Ember.Component.extend({
     let map = L.mapbox.map(this.elementId, 'cluhring.lal7c6c3');
     this.set('map', map);
 
+    let trail = this.get('trail');
+
     let lat = this.get('trail.lat');
 
     let lng = this.get('trail.lng');
