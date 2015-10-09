@@ -41,17 +41,17 @@ export default Ember.Component.extend({
       var radius = e.accuracy / 2;
       var current_lat = e.latlng.lat;
       var current_long = e.latlng.lng;
-      var ctrl = L.Routing.control({
-        waypoints: [
-          L.latLng (current_lat, current_long),
-          L.latLng (lat, lng)
-        ],
-        routeWhileDragging: true,
-        draggableWaypoints: true,
-        autoRoute: true,
-        fitSelectedRoutes: 'smart',
-        geocoder: L.Control.Geocoder.nominatim()
-      }).addTo(map);
+      // var ctrl = L.Routing.control({
+      //   waypoints: [
+      //     L.latLng (current_lat, current_long),
+      //     L.latLng (lat, lng)
+      //   ],
+      //   routeWhileDragging: true,
+      //   draggableWaypoints: true,
+      //   autoRoute: true,
+      //   fitSelectedRoutes: 'smart',
+      //   geocoder: L.Control.Geocoder.nominatim()
+      // }).addTo(map);
 
       L.marker(e.latlng).addTo(map)
       .bindPopup("You are here")
