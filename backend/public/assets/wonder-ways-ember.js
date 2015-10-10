@@ -174,8 +174,8 @@ define('wonder-ways-ember/components/trail-map', ['exports', 'ember'], function 
         var ctrl = L.Routing.control({
           waypoints: [L.latLng(current_lat, current_long), L.latLng(lat, lng)],
           // spliceWaypoints: true,
-          routeWhileDragging: true,
-          draggableWaypoints: true,
+          // routeWhileDragging: true,
+          // draggableWaypoints: true,
           autoRoute: true,
           fitSelectedRoutes: "smart" }).addTo(map);
 
@@ -1420,17 +1420,6 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
         var el1 = dom.createElement("script");
         var el2 = dom.createTextNode("\n  $(document).ready(function(){\n    $(\".featured\").show();\n    $(\".mission\").hide();\n  });\n");
         dom.appendChild(el1, el2);
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createElement("link");
-        dom.setAttribute(el1,"href","https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css");
-        dom.setAttribute(el1,"rel","stylesheet");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createElement("script");
-        dom.setAttribute(el1,"src","https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js");
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
@@ -2893,33 +2882,11 @@ define('wonder-ways-ember/templates/trails/index', ['exports'], function (export
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
-        var el1 = dom.createElement("link");
-        dom.setAttribute(el1,"href","https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css");
-        dom.setAttribute(el1,"rel","stylesheet");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createElement("script");
-        dom.setAttribute(el1,"src","https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
         var el1 = dom.createElement("script");
         var el2 = dom.createTextNode("\n$(function () {\n  $(document).ready(function () {\n    $('a[href=\"#lookUp\"]').on('click', function(event) {\n        event.preventDefault();\n        $('#search').addClass('open');\n        $('#search > form > input[type=\"search\"]').focus();\n    });\n\n    $('#search, #search button.close').on('click keyup', function(event) {\n        if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {\n            $(this).removeClass('open');\n        }\n    });\n  });\n});\n");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createElement("link");
-        dom.setAttribute(el1,"href","https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css");
-        dom.setAttribute(el1,"rel","stylesheet");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createElement("script");
-        dom.setAttribute(el1,"src","https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("git \n");
         dom.appendChild(el0, el1);
         return el0;
       },
@@ -3498,7 +3465,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.9dee52dd"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.83049d6f"});
 }
 
 /* jshint ignore:end */
