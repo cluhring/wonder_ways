@@ -52,8 +52,8 @@ export default Ember.Component.extend({
           L.latLng (lat, lng)
         ],
         // spliceWaypoints: true,
-        routeWhileDragging: true,
-        draggableWaypoints: true,
+        // routeWhileDragging: true,
+        // draggableWaypoints: true,
         autoRoute: true,
         fitSelectedRoutes: 'smart',
         // formatter: new L.Routing.Valhalla.Formatter({units:'imperial'})
