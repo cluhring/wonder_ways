@@ -1423,7 +1423,14 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
-        var el1 = dom.createComment(" <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css' rel='stylesheet' />\n<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'></script> ");
+        var el1 = dom.createElement("link");
+        dom.setAttribute(el1,"href","https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css");
+        dom.setAttribute(el1,"rel","stylesheet");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("script");
+        dom.setAttribute(el1,"src","https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js");
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
@@ -2903,6 +2910,17 @@ define('wonder-ways-ember/templates/trails/index', ['exports'], function (export
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
+        var el1 = dom.createElement("link");
+        dom.setAttribute(el1,"href","https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css");
+        dom.setAttribute(el1,"rel","stylesheet");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("script");
+        dom.setAttribute(el1,"src","https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("git \n");
+        dom.appendChild(el0, el1);
         return el0;
       },
       render: function render(context, env, contextualElement) {
@@ -3480,7 +3498,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.dca9ce96"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.9dee52dd"});
 }
 
 /* jshint ignore:end */
