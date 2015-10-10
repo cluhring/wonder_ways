@@ -138,6 +138,11 @@ define('wonder-ways-ember/components/trail-map', ['exports', 'ember'], function 
       L.mapbox.accessToken = "pk.eyJ1IjoiY2x1aHJpbmciLCJhIjoiNWF2Z1l6ZyJ9.8peAq7kTQyvXShlVv1K82w";
 
       var map = L.mapbox.map(this.elementId, "cluhring.lal7c6c3");
+
+      L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
+      }).addTo(map);
+
       this.set("map", map);
 
       var trail = this.get("trail");
@@ -166,17 +171,13 @@ define('wonder-ways-ember/components/trail-map', ['exports', 'ember'], function 
         var radius = e.accuracy / 2;
         var current_lat = e.latlng.lat;
         var current_long = e.latlng.lng;
-        // var ctrl = L.Routing.control({
-        //   waypoints: [
-        //     L.latLng (current_lat, current_long),
-        //     L.latLng (lat, lng)
-        //   ],
-        //   routeWhileDragging: true,
-        //   draggableWaypoints: true,
-        //   autoRoute: true,
-        //   fitSelectedRoutes: 'smart',
-        //   geocoder: L.Control.Geocoder.nominatim()
-        // }).addTo(map);
+        var ctrl = L.Routing.control({
+          waypoints: [L.latLng(current_lat, current_long), L.latLng(lat, lng)],
+          // spliceWaypoints: true,
+          routeWhileDragging: true,
+          draggableWaypoints: true,
+          autoRoute: true,
+          fitSelectedRoutes: "smart" }).addTo(map);
 
         L.marker(e.latlng).addTo(map).bindPopup("You are here").openPopup().setIcon(L.mapbox.marker.icon({ "marker-color": "#BA1A1A",
           "marker-symbol": "toilets",
@@ -190,6 +191,9 @@ define('wonder-ways-ember/components/trail-map', ['exports', 'ember'], function 
       var myLayer = L.mapbox.featureLayer(points).addTo(map);
     }
   });
+
+  // formatter: new L.Routing.Valhalla.Formatter({units:'imperial'})
+  // geocoder: L.Control.Geocoder.nominatim()
 
 });
 define('wonder-ways-ember/components/us-map', ['exports', 'ember'], function (exports, Ember) {
@@ -1419,6 +1423,10 @@ define('wonder-ways-ember/templates/index', ['exports'], function (exports) {
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
+        var el1 = dom.createComment(" <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css' rel='stylesheet' />\n<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'></script> ");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
         return el0;
       },
       render: function render(context, env, contextualElement) {
@@ -1487,7 +1495,7 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
           dom.setAttribute(el1,"src","assets/images/transparent-wonder-ways-logo.png");
           dom.setAttribute(el1,"id","logo");
           dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n    ");
+          var el1 = dom.createTextNode("\n");
           dom.appendChild(el0, el1);
           return el0;
         },
@@ -2293,6 +2301,28 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
+        var el1 = dom.createElement("link");
+        dom.setAttribute(el1,"href","https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css");
+        dom.setAttribute(el1,"rel","stylesheet");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("link");
+        dom.setAttribute(el1,"rel","stylesheet");
+        dom.setAttribute(el1,"href","assets/leaflet-routing-machine.css");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("script");
+        dom.setAttribute(el1,"src","https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("script");
+        dom.setAttribute(el1,"src","assets/leaflet-routing-machine.min.js");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
         return el0;
       },
       render: function render(context, env, contextualElement) {
@@ -2854,7 +2884,18 @@ define('wonder-ways-ember/templates/trails/index', ['exports'], function (export
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n");
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("link");
+        dom.setAttribute(el1,"href","https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css");
+        dom.setAttribute(el1,"rel","stylesheet");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("script");
+        dom.setAttribute(el1,"src","https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("script");
         var el2 = dom.createTextNode("\n$(function () {\n  $(document).ready(function () {\n    $('a[href=\"#lookUp\"]').on('click', function(event) {\n        event.preventDefault();\n        $('#search').addClass('open');\n        $('#search > form > input[type=\"search\"]').focus();\n    });\n\n    $('#search, #search button.close').on('click keyup', function(event) {\n        if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {\n            $(this).removeClass('open');\n        }\n    });\n  });\n});\n");
@@ -2940,7 +2981,7 @@ define('wonder-ways-ember/tests/components/trail-map.jshint', function () {
 
   module('JSHint - components');
   test('components/trail-map.js should pass jshint', function() { 
-    ok(false, 'components/trail-map.js should pass jshint.\ncomponents/trail-map.js: line 69, col 9, \'myLayer\' is defined but never used.\ncomponents/trail-map.js: line 42, col 11, \'current_lat\' is defined but never used.\ncomponents/trail-map.js: line 43, col 11, \'current_long\' is defined but never used.\n\n3 errors'); 
+    ok(false, 'components/trail-map.js should pass jshint.\ncomponents/trail-map.js: line 76, col 9, \'myLayer\' is defined but never used.\ncomponents/trail-map.js: line 49, col 11, \'ctrl\' is defined but never used.\n\n2 errors'); 
   });
 
 });
@@ -3439,7 +3480,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.107eae47"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.dca9ce96"});
 }
 
 /* jshint ignore:end */
