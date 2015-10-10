@@ -12,6 +12,11 @@ export default Ember.Component.extend({
     L.mapbox.accessToken = 'pk.eyJ1IjoiY2x1aHJpbmciLCJhIjoiNWF2Z1l6ZyJ9.8peAq7kTQyvXShlVv1K82w';
 
     let map = L.mapbox.map(this.elementId, 'cluhring.lal7c6c3');
+
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
     this.set('map', map);
 
     let trail = this.get('trail');
@@ -41,17 +46,19 @@ export default Ember.Component.extend({
       var radius = e.accuracy / 2;
       var current_lat = e.latlng.lat;
       var current_long = e.latlng.lng;
-      // var ctrl = L.Routing.control({
-      //   waypoints: [
-      //     L.latLng (current_lat, current_long),
-      //     L.latLng (lat, lng)
-      //   ],
-      //   routeWhileDragging: true,
-      //   draggableWaypoints: true,
-      //   autoRoute: true,
-      //   fitSelectedRoutes: 'smart',
-      //   geocoder: L.Control.Geocoder.nominatim()
-      // }).addTo(map);
+      var ctrl = L.Routing.control({
+        waypoints: [
+          L.latLng (current_lat, current_long),
+          L.latLng (lat, lng)
+        ],
+        // spliceWaypoints: true,
+        routeWhileDragging: true,
+        draggableWaypoints: true,
+        autoRoute: true,
+        fitSelectedRoutes: 'smart',
+        // formatter: new L.Routing.Valhalla.Formatter({units:'imperial'})
+        // geocoder: L.Control.Geocoder.nominatim()
+      }).addTo(map);
 
       L.marker(e.latlng).addTo(map)
       .bindPopup("You are here")
