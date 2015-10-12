@@ -51,7 +51,6 @@ export default Ember.Component.extend({
           L.latLng (current_lat, current_long),
           L.latLng (lat, lng)
         ],
-        // spliceWaypoints: true,
         // routeWhileDragging: true,
         // draggableWaypoints: true,
         autoRoute: true,
@@ -60,15 +59,22 @@ export default Ember.Component.extend({
         // geocoder: L.Control.Geocoder.nominatim()
       }).addTo(map);
 
-      L.marker(e.latlng).addTo(map)
-      .bindPopup("You are here")
-      .openPopup()
-      .setIcon(L.mapbox.marker.icon({"marker-color": "#BA1A1A",
-                                     "marker-symbol": "toilets",
-                                     "marker-size": "large",
-      }));
+      // L.marker(e.latlng).addTo(map)
+      // .bindPopup("You are here")
+      // .openPopup()
+      // // .divIcon({className: "Howdy"})
+      // .setIcon(L.mapbox.marker.icon({"marker-color": "#BA1A1A",
+      //                                "marker-symbol": "toilets",
+      //                                "marker-size": "large",
+      // }));
 
-      L.circle(e.latlng, radius).addTo(map);
+      L.circle(e.latlng, radius).addTo(map)
+        // .bindPopup("You are here");
+        // .divIcon({className: "Howdy"})
+        // .setIcon(L.mapbox.marker.icon({"marker-color": "#BA1A1A",
+        //                              "marker-symbol": "toilets",
+        //                              "marker-size": "large",
+        // }));
     }
 
     map.on('locationfound', onLocationFound);
