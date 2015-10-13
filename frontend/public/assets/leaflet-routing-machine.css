@@ -131,6 +131,10 @@
     content: '\21c5';
 }
 
+.leaflet-marker-draggable {
+   display: none;
+}
+
 .leaflet-routing-geocoders button:hover {
     background-color: #eee;
 }
