@@ -21,17 +21,17 @@ export default Ember.Component.extend({
 
     let trail = this.get('trail');
 
-    let lat = this.get('trail.lat');
+    let lats = this.get('trail.lat');
 
-    let lng = this.get('trail.lng');
+    let lngs = this.get('trail.lng');
 
-    map.setView([lat, lng], 15);
+    map.setView([lats, lngs], 15);
 
     var points = { "type": "FeatureCollection",
     "features": [
       { "type": "Feature",
       "geometry": {"type": "Point",
-                   "coordinates": [lng, lat]},
+                   "coordinates": [lngs, lats]},
       "properties": {"title": trail.name,
                      "description": trail.city + ", " + trail.state,
                      "marker-symbol": "park",
@@ -49,32 +49,29 @@ export default Ember.Component.extend({
       var ctrl = L.Routing.control({
         waypoints: [
           L.latLng (current_lat, current_long),
-          L.latLng (lat, lng)
+          L.latLng (lats, lngs)
         ],
-        // routeWhileDragging: true,
-        // draggableWaypoints: true,
+        // routeWhileDragging: false,
+        // draggableWaypoints: false,
         autoRoute: true,
         fitSelectedRoutes: 'smart',
         // formatter: new L.Routing.Valhalla.Formatter({units:'imperial'})
         // geocoder: L.Control.Geocoder.nominatim()
       }).addTo(map);
 
-      // L.marker(e.latlng).addTo(map)
-      // .bindPopup("You are here")
-      // .openPopup()
-      // // .divIcon({className: "Howdy"})
-      // .setIcon(L.mapbox.marker.icon({"marker-color": "#BA1A1A",
-      //                                "marker-symbol": "toilets",
-      //                                "marker-size": "large",
-      // }));
+      L.mapbox.accessToken = 'pk.eyJ1IjoiY2x1aHJpbmciLCJhIjoiNWF2Z1l6ZyJ9.8peAq7kTQyvXShlVv1K82w';
 
-      L.circle(e.latlng, radius).addTo(map)
-        // .bindPopup("You are here");
-        // .divIcon({className: "Howdy"})
-        // .setIcon(L.mapbox.marker.icon({"marker-color": "#BA1A1A",
-        //                              "marker-symbol": "toilets",
-        //                              "marker-size": "large",
-        // }));
+      var marker = L.marker([current_lat, current_long], {
+         icon: L.mapbox.marker.icon({
+           title: "You are here",
+           description: "You are here",
+           "marker-color": "#BA1A1A",
+           "marker-symbol": "toilets",
+           "marker-size": "large",
+         })
+       }).addTo(map);
+
+      L.circle(e.latlng, radius).addTo(map);
     }
 
     map.on('locationfound', onLocationFound);

@@ -131,20 +131,8 @@
     content: '\21c5';
 }
 
-/*.leaflet-marker-icon {
-   marker-fill-opacity: 0.9;
-   marker-file: url(http://com.cartodb.users-assets.production.s3.amazonaws.com/simpleicon/map43.svg);
-   marker-width: 10;
-   marker-fill: #F11810;
-}*/
-
 .leaflet-marker-draggable {
-   /*content: "";*/
    display: none;
-   /*marker-fill-opacity: 0.9;
-   marker-file: url(http://com.cartodb.users-assets.production.s3.amazonaws.com/simpleicon/map43.svg);
-   marker-width: 10;
-   marker-fill: #F11810;*/
 }
 
 .leaflet-routing-geocoders button:hover {
