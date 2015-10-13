@@ -147,16 +147,16 @@ define('wonder-ways-ember/components/trail-map', ['exports', 'ember'], function 
 
       var trail = this.get("trail");
 
-      var lat = this.get("trail.lat");
+      var lats = this.get("trail.lat");
 
-      var lng = this.get("trail.lng");
+      var lngs = this.get("trail.lng");
 
-      map.setView([lat, lng], 15);
+      map.setView([lats, lngs], 15);
 
       var points = { type: "FeatureCollection",
         features: [{ type: "Feature",
           geometry: { type: "Point",
-            coordinates: [lng, lat] },
+            coordinates: [lngs, lats] },
           properties: { title: trail.name,
             description: trail.city + ", " + trail.state,
             "marker-symbol": "park",
@@ -172,16 +172,22 @@ define('wonder-ways-ember/components/trail-map', ['exports', 'ember'], function 
         var current_lat = e.latlng.lat;
         var current_long = e.latlng.lng;
         var ctrl = L.Routing.control({
-          waypoints: [L.latLng(current_lat, current_long), L.latLng(lat, lng)],
-          // spliceWaypoints: true,
-          // routeWhileDragging: true,
-          // draggableWaypoints: true,
+          waypoints: [L.latLng(current_lat, current_long), L.latLng(lats, lngs)],
+          // routeWhileDragging: false,
+          // draggableWaypoints: false,
           autoRoute: true,
           fitSelectedRoutes: "smart" }).addTo(map);
 
-        L.marker(e.latlng).addTo(map).bindPopup("You are here").openPopup().setIcon(L.mapbox.marker.icon({ "marker-color": "#BA1A1A",
-          "marker-symbol": "toilets",
-          "marker-size": "large" }));
+        L.mapbox.accessToken = "pk.eyJ1IjoiY2x1aHJpbmciLCJhIjoiNWF2Z1l6ZyJ9.8peAq7kTQyvXShlVv1K82w";
+
+        var marker = L.marker([current_lat, current_long], {
+          icon: L.mapbox.marker.icon({
+            title: "You are here",
+            description: "You are here",
+            "marker-color": "#BA1A1A",
+            "marker-symbol": "toilets",
+            "marker-size": "large" })
+        }).addTo(map);
 
         L.circle(e.latlng, radius).addTo(map);
       }
@@ -2966,7 +2972,7 @@ define('wonder-ways-ember/tests/components/trail-map.jshint', function () {
 
   module('JSHint - components');
   test('components/trail-map.js should pass jshint', function() { 
-    ok(false, 'components/trail-map.js should pass jshint.\ncomponents/trail-map.js: line 76, col 9, \'myLayer\' is defined but never used.\ncomponents/trail-map.js: line 49, col 11, \'ctrl\' is defined but never used.\n\n2 errors'); 
+    ok(false, 'components/trail-map.js should pass jshint.\ncomponents/trail-map.js: line 79, col 9, \'myLayer\' is defined but never used.\ncomponents/trail-map.js: line 49, col 11, \'ctrl\' is defined but never used.\ncomponents/trail-map.js: line 64, col 11, \'marker\' is defined but never used.\n\n3 errors'); 
   });
 
 });
@@ -3465,7 +3471,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.dc3abc86"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.01662ee7"});
 }
 
 /* jshint ignore:end */
