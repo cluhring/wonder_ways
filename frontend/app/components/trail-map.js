@@ -77,5 +77,12 @@ export default Ember.Component.extend({
     map.on('locationfound', onLocationFound);
 
     var myLayer = L.mapbox.featureLayer(points).addTo(map);
+
+    myLayer.on('mouseover', function(e) {
+      e.layer.openPopup();
+    });
+    myLayer.on('mouseout', function(e) {
+      e.layer.closePopup();
+    });
   }
 });
