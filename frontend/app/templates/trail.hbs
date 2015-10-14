@@ -14,20 +14,13 @@
       <h2>{{model.name}}</h2>
       <p class="trail-info">{{model.city}}, {{model.state}}</p>
       {{#if isDesc}}
-        <h3> Description <span> <button {{action 'closeDesc'}} class="btn-directions">X</button></span></h3>
-        <p class="trail-info">{{model.description}}</p>
+        <span> <button {{action 'closeDesc'}} class="trail-info btn-directions">Hide Description</button></span>
+        <p class="btn-direction trail-info">{{model.description}}</p>
       {{/if}}
-      {{#if isDirections}}
-        <h3>Directions <span> <button {{action 'closeDirections'}} class="btn-directions">X</button></span></h3>
-        <p class="trail-info">{{model.directions}}</p>
-      {{/if}}
-
-      {{#unless isDirections}}
-        <button {{action 'expandDirections'}} class="btn-directions">Directions</button>
-      {{/unless}}
       {{#unless isDesc}}
-        <button {{action 'expandDesc'}} class="btn-directions">Description</button>
+        <button {{action 'expandDesc'}} class="trail-info btn-directions">Show Description</button>
       {{/unless}}
+      <button class="trail-info btn-directions" id="direct">Hide Directions</button>
     </div>
     <div class="col-md-3">
       <h2> Trail Information </h2>
@@ -92,3 +85,20 @@
 <link rel="stylesheet" href="assets/leaflet-routing-machine.css" />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'></script>
 <script src="assets/leaflet-routing-machine.min.js"></script>
+<script charset="utf-8">
+  $(document).ready(function(){
+
+    $("#direct").click(function(){
+      if($(this).text()==='Hide Directions'){
+        $('div.leaflet-routing-alternatives-container').hide();
+      // $('leaflet-routing-alt').animate({width:'100%'},'slow')
+        $(this).text('Show Directions');
+      }else{
+        $('div.leaflet-routing-alternatives-container').show();
+      // $('.leaflet-routing-alt').animate({width: '50%'}, 'slow')
+        $(this).text('Hide Directions');
+      }
+    });
+
+  });
+</script>
