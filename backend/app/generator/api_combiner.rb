@@ -21,8 +21,8 @@ module ApiCombiner
           kingdom: species["kingdom"],
           scientific_name: species["species"].capitalize,
           common_name: species["vernacularName"],
-          photo_url: img,
-          clip_url: xeno_canto.species_recording(species["species"]),
+          photo_url: img.slice!(/^[https:]+/),
+          clip_url: xeno_canto.species_recording(species["species"]).slice!(/^[https:]+/),
           lat: species["decimalLatitude"],
           lng: species["decimalLongitude"])
       end
@@ -44,8 +44,8 @@ module ApiCombiner
           kingdom: "Animalia",
           scientific_name: "#{species['gen']} #{species['sp']}",
           common_name: species["en"],
-          photo_url: img,
-          clip_url: species["file"],
+          photo_url: img.slice!(/^[https:]+/),
+          clip_url: species["file"].slice!(/^[https:]+/),
           lat: species["lat"],
           lng: species["lng"])
       end
