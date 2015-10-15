@@ -15,14 +15,14 @@ module ApiCombiner
       if species["species"]
         genus, spec = species["species"].split(" ")
         img = eol.image_from_species(genus, spec)
-        img_web = img.slice!(/^[https:]+/)
+        img.slice!(/^[https:]+/)
 
         Species.create(
           trail_id: trail_id,
           kingdom: species["kingdom"],
           scientific_name: species["species"].capitalize,
           common_name: species["vernacularName"],
-          photo_url: img_web,
+          photo_url: img,
           clip_url: xeno_canto.species_recording(species["species"]).slice!(/^[https:]+/),
           lat: species["decimalLatitude"],
           lng: species["decimalLongitude"])
@@ -39,14 +39,14 @@ module ApiCombiner
     xeno_canto_species.each do |species|
       if species["id"]
         img = eol.image_from_species(species["gen"], species["sp"])
-        img_url = img.slice!(/^[https:]+/)
+        img.slice!(/^[https:]+/)
 
         Species.create(
           trail_id: trail_id,
           kingdom: "Animalia",
           scientific_name: "#{species['gen']} #{species['sp']}",
           common_name: species["en"],
-          photo_url: img_url,
+          photo_url: img,
           clip_url: species["file"].slice!(/^[https:]+/),
           lat: species["lat"],
           lng: species["lng"])
