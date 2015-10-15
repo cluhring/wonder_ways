@@ -195,6 +195,13 @@ define('wonder-ways-ember/components/trail-map', ['exports', 'ember'], function 
       map.on("locationfound", onLocationFound);
 
       var myLayer = L.mapbox.featureLayer(points).addTo(map);
+
+      myLayer.on("mouseover", function (e) {
+        e.layer.openPopup();
+      });
+      myLayer.on("mouseout", function (e) {
+        e.layer.closePopup();
+      });
     }
   });
 
@@ -1535,23 +1542,19 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
           var el0 = dom.createDocumentFragment();
           var el1 = dom.createTextNode("        ");
           dom.appendChild(el0, el1);
-          var el1 = dom.createElement("h3");
-          var el2 = dom.createTextNode(" Description ");
+          var el1 = dom.createElement("span");
+          var el2 = dom.createTextNode(" ");
           dom.appendChild(el1, el2);
-          var el2 = dom.createElement("span");
-          var el3 = dom.createTextNode(" ");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createElement("button");
-          dom.setAttribute(el3,"class","btn-directions");
-          var el4 = dom.createTextNode("X");
-          dom.appendChild(el3, el4);
+          var el2 = dom.createElement("button");
+          dom.setAttribute(el2,"class","trail-info btn-directions");
+          var el3 = dom.createTextNode("Hide Description");
           dom.appendChild(el2, el3);
           dom.appendChild(el1, el2);
           dom.appendChild(el0, el1);
           var el1 = dom.createTextNode("\n        ");
           dom.appendChild(el0, el1);
           var el1 = dom.createElement("p");
-          dom.setAttribute(el1,"class","trail-info");
+          dom.setAttribute(el1,"class","btn-direction trail-info");
           var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
           dom.appendChild(el0, el1);
@@ -1579,9 +1582,9 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
           } else {
             fragment = this.build(dom);
           }
-          var element14 = dom.childAt(fragment, [1, 1, 1]);
+          var element9 = dom.childAt(fragment, [1, 1]);
           var morph0 = dom.createMorphAt(dom.childAt(fragment, [3]),0,0);
-          element(env, element14, context, "action", ["closeDesc"], {});
+          element(env, element9, context, "action", ["closeDesc"], {});
           content(env, morph0, context, "model.description");
           return fragment;
         }
@@ -1598,24 +1601,9 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
           var el0 = dom.createDocumentFragment();
           var el1 = dom.createTextNode("        ");
           dom.appendChild(el0, el1);
-          var el1 = dom.createElement("h3");
-          var el2 = dom.createTextNode("Directions ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createElement("span");
-          var el3 = dom.createTextNode(" ");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createElement("button");
-          dom.setAttribute(el3,"class","btn-directions");
-          var el4 = dom.createTextNode("X");
-          dom.appendChild(el3, el4);
-          dom.appendChild(el2, el3);
-          dom.appendChild(el1, el2);
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n        ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createElement("p");
-          dom.setAttribute(el1,"class","trail-info");
-          var el2 = dom.createComment("");
+          var el1 = dom.createElement("button");
+          dom.setAttribute(el1,"class","trail-info btn-directions");
+          var el2 = dom.createTextNode("Show Description");
           dom.appendChild(el1, el2);
           dom.appendChild(el0, el1);
           var el1 = dom.createTextNode("\n");
@@ -1624,7 +1612,7 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
         },
         render: function render(context, env, contextualElement) {
           var dom = env.dom;
-          var hooks = env.hooks, element = hooks.element, content = hooks.content;
+          var hooks = env.hooks, element = hooks.element;
           dom.detectNamespace(contextualElement);
           var fragment;
           if (env.useFragmentCache && dom.canClone) {
@@ -1642,10 +1630,8 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
           } else {
             fragment = this.build(dom);
           }
-          var element13 = dom.childAt(fragment, [1, 1, 1]);
-          var morph0 = dom.createMorphAt(dom.childAt(fragment, [3]),0,0);
-          element(env, element13, context, "action", ["closeDirections"], {});
-          content(env, morph0, context, "model.directions");
+          var element8 = dom.childAt(fragment, [1]);
+          element(env, element8, context, "action", ["expandDesc"], {});
           return fragment;
         }
       };
@@ -1659,102 +1645,11 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
         hasRendered: false,
         build: function build(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("        ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createElement("button");
-          dom.setAttribute(el1,"class","btn-directions");
-          var el2 = dom.createTextNode("Directions");
-          dom.appendChild(el1, el2);
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        render: function render(context, env, contextualElement) {
-          var dom = env.dom;
-          var hooks = env.hooks, element = hooks.element;
-          dom.detectNamespace(contextualElement);
-          var fragment;
-          if (env.useFragmentCache && dom.canClone) {
-            if (this.cachedFragment === null) {
-              fragment = this.build(dom);
-              if (this.hasRendered) {
-                this.cachedFragment = fragment;
-              } else {
-                this.hasRendered = true;
-              }
-            }
-            if (this.cachedFragment) {
-              fragment = dom.cloneNode(this.cachedFragment, true);
-            }
-          } else {
-            fragment = this.build(dom);
-          }
-          var element12 = dom.childAt(fragment, [1]);
-          element(env, element12, context, "action", ["expandDirections"], {});
-          return fragment;
-        }
-      };
-    }());
-    var child4 = (function() {
-      return {
-        isHTMLBars: true,
-        revision: "Ember@1.11.0",
-        blockParams: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        build: function build(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("        ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createElement("button");
-          dom.setAttribute(el1,"class","btn-directions");
-          var el2 = dom.createTextNode("Description");
-          dom.appendChild(el1, el2);
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        render: function render(context, env, contextualElement) {
-          var dom = env.dom;
-          var hooks = env.hooks, element = hooks.element;
-          dom.detectNamespace(contextualElement);
-          var fragment;
-          if (env.useFragmentCache && dom.canClone) {
-            if (this.cachedFragment === null) {
-              fragment = this.build(dom);
-              if (this.hasRendered) {
-                this.cachedFragment = fragment;
-              } else {
-                this.hasRendered = true;
-              }
-            }
-            if (this.cachedFragment) {
-              fragment = dom.cloneNode(this.cachedFragment, true);
-            }
-          } else {
-            fragment = this.build(dom);
-          }
-          var element11 = dom.childAt(fragment, [1]);
-          element(env, element11, context, "action", ["expandDesc"], {});
-          return fragment;
-        }
-      };
-    }());
-    var child5 = (function() {
-      return {
-        isHTMLBars: true,
-        revision: "Ember@1.11.0",
-        blockParams: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        build: function build(dom) {
-          var el0 = dom.createDocumentFragment();
           var el1 = dom.createTextNode("              ");
           dom.appendChild(el0, el1);
           var el1 = dom.createElement("li");
           var el2 = dom.createElement("a");
+          dom.setAttribute(el2,"target","_blank");
           dom.setAttribute(el2,"class","info-text");
           var el3 = dom.createComment("");
           dom.appendChild(el2, el3);
@@ -1784,11 +1679,147 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
           } else {
             fragment = this.build(dom);
           }
-          var element10 = dom.childAt(fragment, [1, 0]);
-          var morph0 = dom.createMorphAt(element10,0,0);
-          var attrMorph0 = dom.createAttrMorph(element10, 'href');
-          attribute(env, attrMorph0, element10, "href", concat(env, [get(env, context, "activity.url")]));
+          var element7 = dom.childAt(fragment, [1, 0]);
+          var morph0 = dom.createMorphAt(element7,0,0);
+          var attrMorph0 = dom.createAttrMorph(element7, 'href');
+          attribute(env, attrMorph0, element7, "href", concat(env, [get(env, context, "activity.url")]));
           content(env, morph0, context, "activity.activity_type_name");
+          return fragment;
+        }
+      };
+    }());
+    var child4 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 1,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("              ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("li");
+          dom.setAttribute(el1,"class","animal-info");
+          var el2 = dom.createTextNode("\n                ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("img");
+          dom.setAttribute(el2,"class","pretty-picture img-rounded");
+          dom.setAttribute(el2,"width","152");
+          dom.setAttribute(el2,"height","118");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n                ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode(" - ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement, blockArguments) {
+          var dom = env.dom;
+          var hooks = env.hooks, set = hooks.set, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute, content = hooks.content;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          var element5 = dom.childAt(fragment, [1]);
+          var element6 = dom.childAt(element5, [1]);
+          var attrMorph0 = dom.createAttrMorph(element6, 'src');
+          var attrMorph1 = dom.createAttrMorph(element6, 'alt');
+          var morph0 = dom.createMorphAt(element5,3,3);
+          var morph1 = dom.createMorphAt(element5,5,5);
+          set(env, context, "animal", blockArguments[0]);
+          attribute(env, attrMorph0, element6, "src", concat(env, [get(env, context, "animal.photo_url")]));
+          attribute(env, attrMorph1, element6, "alt", concat(env, [get(env, context, "animal.scientific_name"), " - ", get(env, context, "animal.common_name")]));
+          content(env, morph0, context, "animal.scientific_name");
+          content(env, morph1, context, "animal.common_name");
+          return fragment;
+        }
+      };
+    }());
+    var child5 = (function() {
+      return {
+        isHTMLBars: true,
+        revision: "Ember@1.11.0",
+        blockParams: 1,
+        cachedFragment: null,
+        hasRendered: false,
+        build: function build(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("              ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("li");
+          dom.setAttribute(el1,"class","animal-info");
+          var el2 = dom.createTextNode("\n                ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("img");
+          dom.setAttribute(el2,"class","pretty-picture img-rounded");
+          dom.setAttribute(el2,"width","152");
+          dom.setAttribute(el2,"height","118");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n                ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode(" - ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createComment("");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        render: function render(context, env, contextualElement, blockArguments) {
+          var dom = env.dom;
+          var hooks = env.hooks, set = hooks.set, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute, content = hooks.content;
+          dom.detectNamespace(contextualElement);
+          var fragment;
+          if (env.useFragmentCache && dom.canClone) {
+            if (this.cachedFragment === null) {
+              fragment = this.build(dom);
+              if (this.hasRendered) {
+                this.cachedFragment = fragment;
+              } else {
+                this.hasRendered = true;
+              }
+            }
+            if (this.cachedFragment) {
+              fragment = dom.cloneNode(this.cachedFragment, true);
+            }
+          } else {
+            fragment = this.build(dom);
+          }
+          var element3 = dom.childAt(fragment, [1]);
+          var element4 = dom.childAt(element3, [1]);
+          var attrMorph0 = dom.createAttrMorph(element4, 'src');
+          var attrMorph1 = dom.createAttrMorph(element4, 'alt');
+          var morph0 = dom.createMorphAt(element3,3,3);
+          var morph1 = dom.createMorphAt(element3,5,5);
+          set(env, context, "plant", blockArguments[0]);
+          attribute(env, attrMorph0, element4, "src", concat(env, [get(env, context, "plant.photo_url")]));
+          attribute(env, attrMorph1, element4, "alt", concat(env, [get(env, context, "plant.scientific_name"), " - ", get(env, context, "plant.common_name")]));
+          content(env, morph0, context, "plant.scientific_name");
+          content(env, morph1, context, "plant.common_name");
           return fragment;
         }
       };
@@ -1806,175 +1837,29 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
           dom.appendChild(el0, el1);
           var el1 = dom.createElement("li");
           dom.setAttribute(el1,"class","animal-info");
-          var el2 = dom.createElement("a");
-          dom.setAttribute(el2,"class","info-text");
-          var el3 = dom.createTextNode(" ");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createElement("img");
-          dom.setAttribute(el3,"class","img-rounded");
-          dom.setAttribute(el3,"width","152");
-          dom.setAttribute(el3,"height","118");
-          dom.appendChild(el2, el3);
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode(" ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode(" ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        render: function render(context, env, contextualElement, blockArguments) {
-          var dom = env.dom;
-          var hooks = env.hooks, set = hooks.set, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute, content = hooks.content;
-          dom.detectNamespace(contextualElement);
-          var fragment;
-          if (env.useFragmentCache && dom.canClone) {
-            if (this.cachedFragment === null) {
-              fragment = this.build(dom);
-              if (this.hasRendered) {
-                this.cachedFragment = fragment;
-              } else {
-                this.hasRendered = true;
-              }
-            }
-            if (this.cachedFragment) {
-              fragment = dom.cloneNode(this.cachedFragment, true);
-            }
-          } else {
-            fragment = this.build(dom);
-          }
-          var element7 = dom.childAt(fragment, [1]);
-          var element8 = dom.childAt(element7, [0]);
-          var element9 = dom.childAt(element8, [1]);
-          var attrMorph0 = dom.createAttrMorph(element8, 'href');
-          var attrMorph1 = dom.createAttrMorph(element9, 'src');
-          var attrMorph2 = dom.createAttrMorph(element9, 'alt');
-          var morph0 = dom.createMorphAt(element7,2,2);
-          var morph1 = dom.createMorphAt(element7,4,4);
-          set(env, context, "animal", blockArguments[0]);
-          attribute(env, attrMorph0, element8, "href", concat(env, [get(env, context, "animal.photo_url")]));
-          attribute(env, attrMorph1, element9, "src", concat(env, [get(env, context, "animal.photo_url")]));
-          attribute(env, attrMorph2, element9, "alt", concat(env, ["Photo of ", get(env, context, "animal.scientific_name")]));
-          content(env, morph0, context, "animal.scientific_name");
-          content(env, morph1, context, "animal.common_name");
-          return fragment;
-        }
-      };
-    }());
-    var child7 = (function() {
-      return {
-        isHTMLBars: true,
-        revision: "Ember@1.11.0",
-        blockParams: 1,
-        cachedFragment: null,
-        hasRendered: false,
-        build: function build(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("              ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createElement("li");
-          dom.setAttribute(el1,"class","animal-info");
-          var el2 = dom.createElement("a");
-          dom.setAttribute(el2,"class","info-text");
-          var el3 = dom.createElement("img");
-          dom.setAttribute(el3,"class","img-rounded");
-          dom.setAttribute(el3,"width","152");
-          dom.setAttribute(el3,"height","118");
-          dom.appendChild(el2, el3);
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode(" ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode(" ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createComment("");
-          dom.appendChild(el1, el2);
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        render: function render(context, env, contextualElement, blockArguments) {
-          var dom = env.dom;
-          var hooks = env.hooks, set = hooks.set, get = hooks.get, concat = hooks.concat, attribute = hooks.attribute, content = hooks.content;
-          dom.detectNamespace(contextualElement);
-          var fragment;
-          if (env.useFragmentCache && dom.canClone) {
-            if (this.cachedFragment === null) {
-              fragment = this.build(dom);
-              if (this.hasRendered) {
-                this.cachedFragment = fragment;
-              } else {
-                this.hasRendered = true;
-              }
-            }
-            if (this.cachedFragment) {
-              fragment = dom.cloneNode(this.cachedFragment, true);
-            }
-          } else {
-            fragment = this.build(dom);
-          }
-          var element4 = dom.childAt(fragment, [1]);
-          var element5 = dom.childAt(element4, [0]);
-          var element6 = dom.childAt(element5, [0]);
-          var attrMorph0 = dom.createAttrMorph(element5, 'href');
-          var attrMorph1 = dom.createAttrMorph(element6, 'src');
-          var attrMorph2 = dom.createAttrMorph(element6, 'alt');
-          var morph0 = dom.createMorphAt(element4,2,2);
-          var morph1 = dom.createMorphAt(element4,4,4);
-          set(env, context, "plant", blockArguments[0]);
-          attribute(env, attrMorph0, element5, "href", concat(env, [get(env, context, "plant.photo_url")]));
-          attribute(env, attrMorph1, element6, "src", concat(env, [get(env, context, "plant.photo_url")]));
-          attribute(env, attrMorph2, element6, "alt", concat(env, ["Photo of ", get(env, context, "plant.scientific_name")]));
-          content(env, morph0, context, "plant.scientific_name");
-          content(env, morph1, context, "plant.common_name");
-          return fragment;
-        }
-      };
-    }());
-    var child8 = (function() {
-      return {
-        isHTMLBars: true,
-        revision: "Ember@1.11.0",
-        blockParams: 1,
-        cachedFragment: null,
-        hasRendered: false,
-        build: function build(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("              ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createElement("li");
-          dom.setAttribute(el1,"class","animal-info");
           var el2 = dom.createTextNode("\n                ");
           dom.appendChild(el1, el2);
-          var el2 = dom.createElement("a");
-          dom.setAttribute(el2,"class","info-text");
-          var el3 = dom.createTextNode("\n                  ");
-          dom.appendChild(el2, el3);
-          var el3 = dom.createElement("img");
-          dom.setAttribute(el3,"class","img-circle");
-          dom.setAttribute(el3,"height","76");
-          dom.setAttribute(el3,"width","76");
-          dom.appendChild(el2, el3);
+          var el2 = dom.createComment(" <a href=\"{{bird.photo_url}}\" class=\"info-text\" target=\"_blank\"> ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n                  ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("img");
+          dom.setAttribute(el2,"class","pretty-picture img-circle");
+          dom.setAttribute(el2,"height","76");
+          dom.setAttribute(el2,"width","76");
           dom.appendChild(el1, el2);
           var el2 = dom.createTextNode("\n                  ");
           dom.appendChild(el1, el2);
           var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode(" ");
+          var el2 = dom.createTextNode(" - ");
           dom.appendChild(el1, el2);
           var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
           var el2 = dom.createTextNode("\n                ");
           dom.appendChild(el1, el2);
           var el2 = dom.createElement("a");
+          dom.setAttribute(el2,"target","_blank");
           var el3 = dom.createTextNode("\n                  ");
           dom.appendChild(el2, el3);
           var el3 = dom.createElement("img");
@@ -2010,22 +1895,19 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
             fragment = this.build(dom);
           }
           var element0 = dom.childAt(fragment, [1]);
-          var element1 = dom.childAt(element0, [1]);
-          var element2 = dom.childAt(element1, [1]);
-          var element3 = dom.childAt(element0, [7]);
-          var attrMorph0 = dom.createAttrMorph(element1, 'href');
-          var attrMorph1 = dom.createAttrMorph(element2, 'src');
-          var attrMorph2 = dom.createAttrMorph(element2, 'alt');
-          var morph0 = dom.createMorphAt(element0,3,3);
-          var morph1 = dom.createMorphAt(element0,5,5);
-          var attrMorph3 = dom.createAttrMorph(element3, 'href');
+          var element1 = dom.childAt(element0, [3]);
+          var element2 = dom.childAt(element0, [9]);
+          var attrMorph0 = dom.createAttrMorph(element1, 'src');
+          var attrMorph1 = dom.createAttrMorph(element1, 'alt');
+          var morph0 = dom.createMorphAt(element0,5,5);
+          var morph1 = dom.createMorphAt(element0,7,7);
+          var attrMorph2 = dom.createAttrMorph(element2, 'href');
           set(env, context, "bird", blockArguments[0]);
-          attribute(env, attrMorph0, element1, "href", concat(env, [get(env, context, "bird.photo_url")]));
-          attribute(env, attrMorph1, element2, "src", concat(env, [get(env, context, "bird.photo_url")]));
-          attribute(env, attrMorph2, element2, "alt", concat(env, ["Image of ", get(env, context, "bird.scientific_name")]));
+          attribute(env, attrMorph0, element1, "src", concat(env, [get(env, context, "bird.photo_url")]));
+          attribute(env, attrMorph1, element1, "alt", concat(env, [get(env, context, "bird.scientific_name"), " - ", get(env, context, "bird.common_name")]));
           content(env, morph0, context, "bird.scientific_name");
           content(env, morph1, context, "bird.common_name");
-          attribute(env, attrMorph3, element3, "href", concat(env, [get(env, context, "bird.clip_url")]));
+          attribute(env, attrMorph2, element2, "href", concat(env, [get(env, context, "bird.clip_url")]));
           return fragment;
         }
       };
@@ -2104,13 +1986,15 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
         dom.appendChild(el3, el4);
         var el4 = dom.createComment("");
         dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n");
+        var el4 = dom.createTextNode("      ");
         dom.appendChild(el3, el4);
-        var el4 = dom.createComment("");
+        var el4 = dom.createElement("button");
+        dom.setAttribute(el4,"class","trail-info btn-directions");
+        dom.setAttribute(el4,"id","direct");
+        var el5 = dom.createTextNode("Hide Directions");
+        dom.appendChild(el4, el5);
         dom.appendChild(el3, el4);
-        var el4 = dom.createComment("");
-        dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("    ");
+        var el4 = dom.createTextNode("\n    ");
         dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
         var el3 = dom.createTextNode("\n    ");
@@ -2160,7 +2044,93 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("div");
         dom.setAttribute(el4,"class","col-md-5 category-icons well");
-        var el5 = dom.createTextNode("\n        ");
+        var el5 = dom.createTextNode("\n\n        ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("div");
+        dom.setAttribute(el5,"class","modal fade");
+        dom.setAttribute(el5,"id","imagemodal");
+        dom.setAttribute(el5,"tabindex","-1");
+        dom.setAttribute(el5,"role","dialog");
+        dom.setAttribute(el5,"aria-labelledby","myModalLabel");
+        dom.setAttribute(el5,"aria-hidden","true");
+        var el6 = dom.createTextNode("\n          ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6,"class","modal-dialog");
+        var el7 = dom.createTextNode("\n            ");
+        dom.appendChild(el6, el7);
+        var el7 = dom.createElement("div");
+        dom.setAttribute(el7,"class","modal-content");
+        var el8 = dom.createTextNode("\n              ");
+        dom.appendChild(el7, el8);
+        var el8 = dom.createElement("div");
+        dom.setAttribute(el8,"class","modal-header");
+        var el9 = dom.createTextNode("\n                ");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createElement("button");
+        dom.setAttribute(el9,"type","button");
+        dom.setAttribute(el9,"class","close");
+        dom.setAttribute(el9,"data-dismiss","modal");
+        var el10 = dom.createElement("span");
+        dom.setAttribute(el10,"aria-hidden","true");
+        var el11 = dom.createTextNode("×");
+        dom.appendChild(el10, el11);
+        dom.appendChild(el9, el10);
+        var el10 = dom.createElement("span");
+        dom.setAttribute(el10,"class","sr-only");
+        var el11 = dom.createTextNode("Close");
+        dom.appendChild(el10, el11);
+        dom.appendChild(el9, el10);
+        dom.appendChild(el8, el9);
+        var el9 = dom.createTextNode("\n                ");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createElement("h1");
+        dom.setAttribute(el9,"class","modal-title");
+        dom.setAttribute(el9,"id","myModalLabel");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createTextNode("\n              ");
+        dom.appendChild(el8, el9);
+        dom.appendChild(el7, el8);
+        var el8 = dom.createTextNode("\n              ");
+        dom.appendChild(el7, el8);
+        var el8 = dom.createElement("div");
+        dom.setAttribute(el8,"class","modal-body");
+        var el9 = dom.createTextNode("\n                ");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createElement("img");
+        dom.setAttribute(el9,"src","");
+        dom.setAttribute(el9,"id","imagepreview");
+        dom.setAttribute(el9,"style","width: 400px; height: 264px;");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createTextNode("\n              ");
+        dom.appendChild(el8, el9);
+        dom.appendChild(el7, el8);
+        var el8 = dom.createTextNode("\n              ");
+        dom.appendChild(el7, el8);
+        var el8 = dom.createElement("div");
+        dom.setAttribute(el8,"class","modal-footer");
+        var el9 = dom.createTextNode("\n                ");
+        dom.appendChild(el8, el9);
+        var el9 = dom.createElement("button");
+        dom.setAttribute(el9,"type","button");
+        dom.setAttribute(el9,"class","btn btn-default");
+        dom.setAttribute(el9,"data-dismiss","modal");
+        var el10 = dom.createTextNode("Close");
+        dom.appendChild(el9, el10);
+        dom.appendChild(el8, el9);
+        var el9 = dom.createTextNode("\n              ");
+        dom.appendChild(el8, el9);
+        dom.appendChild(el7, el8);
+        var el8 = dom.createTextNode("\n            ");
+        dom.appendChild(el7, el8);
+        dom.appendChild(el6, el7);
+        var el7 = dom.createTextNode("\n          ");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n        ");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n\n        ");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("button");
         dom.setAttribute(el5,"class","icon");
@@ -2325,6 +2295,13 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
+        var el1 = dom.createElement("script");
+        dom.setAttribute(el1,"charset","utf-8");
+        var el2 = dom.createTextNode("\n  $(document).ready(function(){\n\n    $(\"#direct\").click(function(){\n      if($(this).text()==='Hide Directions'){\n        $('div.leaflet-routing-alternatives-container').hide();\n        $(this).text('Show Directions');\n      }else{\n        $('div.leaflet-routing-alternatives-container').show();\n        $(this).text('Hide Directions');\n      }\n    });\n\n    $(\".pretty-picture\").each(function(){\n      $(this).click(function(){\n        $('#imagepreview').attr('src', $(this).attr('src')); // here asign the image to the modal when the user click the enlarge link\n        $('.modal-title').text($(this).attr('alt')); // here asign animal name to the modal when the user click the picture\n        $('#imagemodal').modal('toggle'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function\n      });\n    });\n\n  });\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
         return el0;
       },
       render: function render(context, env, contextualElement) {
@@ -2347,55 +2324,51 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
         } else {
           fragment = this.build(dom);
         }
-        var element15 = dom.childAt(fragment, [0]);
-        var element16 = dom.childAt(element15, [1, 1]);
-        var element17 = dom.childAt(fragment, [2]);
-        var element18 = dom.childAt(element17, [1, 1]);
-        var element19 = dom.childAt(element18, [3]);
-        var element20 = dom.childAt(element17, [3, 1]);
-        var element21 = dom.childAt(element20, [3]);
+        var element10 = dom.childAt(fragment, [0]);
+        var element11 = dom.childAt(element10, [1, 1]);
+        var element12 = dom.childAt(fragment, [2]);
+        var element13 = dom.childAt(element12, [1, 1]);
+        var element14 = dom.childAt(element13, [3]);
+        var element15 = dom.childAt(element12, [3, 1]);
+        var element16 = dom.childAt(element15, [3]);
+        var element17 = dom.childAt(element16, [3]);
+        var element18 = dom.childAt(element16, [5]);
+        var element19 = dom.childAt(element16, [7]);
+        var element20 = dom.childAt(element16, [9]);
+        var element21 = dom.childAt(element16, [11]);
         var element22 = dom.childAt(element21, [1]);
-        var element23 = dom.childAt(element21, [3]);
-        var element24 = dom.childAt(element21, [5]);
-        var element25 = dom.childAt(element21, [7]);
-        var element26 = dom.childAt(element21, [9]);
-        var element27 = dom.childAt(element26, [1]);
-        var attrMorph0 = dom.createAttrMorph(element16, 'href');
-        var morph0 = dom.createMorphAt(dom.childAt(element15, [3]),1,1);
-        var morph1 = dom.createMorphAt(dom.childAt(element18, [1]),0,0);
-        var morph2 = dom.createMorphAt(element19,0,0);
-        var morph3 = dom.createMorphAt(element19,2,2);
-        var morph4 = dom.createMorphAt(element18,5,5);
-        var morph5 = dom.createMorphAt(element18,6,6);
-        var morph6 = dom.createMorphAt(element18,8,8);
-        var morph7 = dom.createMorphAt(element18,9,9);
-        var morph8 = dom.createMorphAt(dom.childAt(element20, [1, 1]),1,1);
-        var morph9 = dom.createMorphAt(dom.childAt(element27, [3]),1,1);
-        var morph10 = dom.createMorphAt(dom.childAt(element27, [5]),0,0);
-        var morph11 = dom.createMorphAt(element27,7,7);
-        var morph12 = dom.createMorphAt(dom.childAt(element26, [3]),3,3);
-        var morph13 = dom.createMorphAt(dom.childAt(element26, [5]),3,3);
-        var morph14 = dom.createMorphAt(dom.childAt(element26, [7]),3,3);
-        attribute(env, attrMorph0, element16, "href", concat(env, ["/", get(env, context, "model.state")]));
+        var attrMorph0 = dom.createAttrMorph(element11, 'href');
+        var morph0 = dom.createMorphAt(dom.childAt(element10, [3]),1,1);
+        var morph1 = dom.createMorphAt(dom.childAt(element13, [1]),0,0);
+        var morph2 = dom.createMorphAt(element14,0,0);
+        var morph3 = dom.createMorphAt(element14,2,2);
+        var morph4 = dom.createMorphAt(element13,5,5);
+        var morph5 = dom.createMorphAt(element13,6,6);
+        var morph6 = dom.createMorphAt(dom.childAt(element15, [1, 1]),1,1);
+        var morph7 = dom.createMorphAt(dom.childAt(element22, [3]),1,1);
+        var morph8 = dom.createMorphAt(dom.childAt(element22, [5]),0,0);
+        var morph9 = dom.createMorphAt(element22,7,7);
+        var morph10 = dom.createMorphAt(dom.childAt(element21, [3]),3,3);
+        var morph11 = dom.createMorphAt(dom.childAt(element21, [5]),3,3);
+        var morph12 = dom.createMorphAt(dom.childAt(element21, [7]),3,3);
+        attribute(env, attrMorph0, element11, "href", concat(env, ["/", get(env, context, "model.state")]));
         block(env, morph0, context, "link-to", ["index"], {}, child0, null);
         content(env, morph1, context, "model.name");
         content(env, morph2, context, "model.city");
         content(env, morph3, context, "model.state");
         block(env, morph4, context, "if", [get(env, context, "isDesc")], {}, child1, null);
-        block(env, morph5, context, "if", [get(env, context, "isDirections")], {}, child2, null);
-        block(env, morph6, context, "unless", [get(env, context, "isDirections")], {}, child3, null);
-        block(env, morph7, context, "unless", [get(env, context, "isDesc")], {}, child4, null);
-        inline(env, morph8, context, "trail-map", [], {"trail": get(env, context, "model")});
-        element(env, element22, context, "action", ["filter", ".activities"], {});
-        element(env, element23, context, "action", ["filter", ".birds"], {});
-        element(env, element24, context, "action", ["filter", ".animals"], {});
-        element(env, element25, context, "action", ["filter", ".plants"], {});
-        content(env, morph9, context, "model.length");
-        content(env, morph10, context, "trailActivities.firstObject.activity_description");
-        block(env, morph11, context, "each", [get(env, context, "model.activities")], {"keyword": "activity"}, child5, null);
-        block(env, morph12, context, "each", [get(env, context, "animals")], {}, child6, null);
-        block(env, morph13, context, "each", [get(env, context, "plants")], {}, child7, null);
-        block(env, morph14, context, "each", [get(env, context, "birds")], {}, child8, null);
+        block(env, morph5, context, "unless", [get(env, context, "isDesc")], {}, child2, null);
+        inline(env, morph6, context, "trail-map", [], {"trail": get(env, context, "model")});
+        element(env, element17, context, "action", ["filter", ".activities"], {});
+        element(env, element18, context, "action", ["filter", ".birds"], {});
+        element(env, element19, context, "action", ["filter", ".animals"], {});
+        element(env, element20, context, "action", ["filter", ".plants"], {});
+        content(env, morph7, context, "model.length");
+        content(env, morph8, context, "trailActivities.firstObject.activity_description");
+        block(env, morph9, context, "each", [get(env, context, "model.activities")], {"keyword": "activity"}, child3, null);
+        block(env, morph10, context, "each", [get(env, context, "animals")], {}, child4, null);
+        block(env, morph11, context, "each", [get(env, context, "plants")], {}, child5, null);
+        block(env, morph12, context, "each", [get(env, context, "birds")], {}, child6, null);
         return fragment;
       }
     };
@@ -2972,7 +2945,7 @@ define('wonder-ways-ember/tests/components/trail-map.jshint', function () {
 
   module('JSHint - components');
   test('components/trail-map.js should pass jshint', function() { 
-    ok(false, 'components/trail-map.js should pass jshint.\ncomponents/trail-map.js: line 79, col 9, \'myLayer\' is defined but never used.\ncomponents/trail-map.js: line 49, col 11, \'ctrl\' is defined but never used.\ncomponents/trail-map.js: line 64, col 11, \'marker\' is defined but never used.\n\n3 errors'); 
+    ok(false, 'components/trail-map.js should pass jshint.\ncomponents/trail-map.js: line 49, col 11, \'ctrl\' is defined but never used.\ncomponents/trail-map.js: line 64, col 11, \'marker\' is defined but never used.\n\n2 errors'); 
   });
 
 });
@@ -3471,7 +3444,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.01662ee7"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.4d566a1b"});
 }
 
 /* jshint ignore:end */
