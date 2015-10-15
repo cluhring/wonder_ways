@@ -19,7 +19,7 @@ module ApiCombiner
         Species.create(
           trail_id: trail_id,
           kingdom: species["kingdom"],
-          scientific_name: species["species"],
+          scientific_name: species["species"].capitalize,
           common_name: species["vernacularName"],
           photo_url: img,
           clip_url: xeno_canto.species_recording(species["species"]),

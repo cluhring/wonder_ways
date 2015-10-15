@@ -17,7 +17,7 @@ class TrailGenerator
         trail["activities"].each do |activity|
           Activity.find_or_create_by(unique_id: activity["unique_id"]) do |a|
             a.trail_id             = saved_trail.id
-            a.activity_type_name   = activity["activity_type_name"]
+            a.activity_type_name   = activity["activity_type_name"].capitalize
             a.url                  = activity["url"]
             a.activity_description = activity["activity_description"]
             a.length               = activity["length"]
