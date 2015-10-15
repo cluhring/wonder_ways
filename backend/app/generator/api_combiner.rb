@@ -15,7 +15,6 @@ module ApiCombiner
       if species["species"]
         genus, spec = species["species"].split(" ")
         img = eol.image_from_species(genus, spec)
-        # img.slice!(/^[https:]+/)
 
         Species.create(
           trail_id: trail_id,
@@ -39,7 +38,6 @@ module ApiCombiner
     xeno_canto_species.each do |species|
       if species["id"]
         img = eol.image_from_species(species["gen"], species["sp"])
-        # img.slice!(/^[https:]+/)
 
         Species.create(
           trail_id: trail_id,
