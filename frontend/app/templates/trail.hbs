@@ -46,27 +46,21 @@
             <li>Trail Length: {{model.length}}</li>
             <li>{{trailActivities.firstObject.activity_description}}</li>
             {{#each activity in model.activities}}
-              <li><a href="{{activity.url}}" target="_blank" class="info-text">{{activity.activity_type_name}}</a></li>
+              <li><a href="{{activity.url}}" class="info-text">{{activity.activity_type_name}}</a></li>
             {{/each}}
           </ul>
 
           <ul class="animals categoryType" hidden=true>
             <h3 class="sidebar-title">Animals</h3>
             {{#each animals as |animal|}}
-              <li class="animal-info">
-                <a href="{{animal.photo_url}}" class="info-text" target="_blank">
-                <img src="{{animal.photo_url}}" class="pretty-picture img-rounded" alt="{{animal.scientific_name}} - {{animal.common_name}}" width="152" height="118"></a>
-                {{animal.scientific_name}} - {{animal.common_name}}</li>
+              <li class="animal-info"><a href="{{animal.photo_url}}" class="info-text"> <img src="{{animal.photo_url}}" class="img-rounded" alt="Photo of {{animal.scientific_name}}" width="152" height="118"></a> {{animal.scientific_name}} {{animal.common_name}}</li>
             {{/each}}
           </ul>
 
           <ul class="plants categoryType" hidden=true>
             <h3 class="sidebar-title">Plants</h3>
             {{#each plants as |plant|}}
-              <li class="animal-info">
-                <a href="{{plant.photo_url}}" class="info-text" target="_blank">
-                <img src="{{plant.photo_url}}" class="pretty-picture img-rounded" alt="{{plant.scientific_name}} - {{plant.common_name}}" width="152" height="118"></a>
-                {{plant.scientific_name}} - {{plant.common_name}}</li>
+              <li class="animal-info"><a href="{{plant.photo_url}}" class="info-text"><img src="{{plant.photo_url}}" class="img-rounded" alt="Photo of {{plant.scientific_name}}" width="152" height="118"></a> {{plant.scientific_name}} {{plant.common_name}}</li>
             {{/each}}
           </ul>
 
@@ -74,10 +68,10 @@
             <h3 class="sidebar-title">Birds</h3>
             {{#each birds as |bird|}}
               <li class="animal-info">
-                <a href="{{bird.photo_url}}" class="info-text" target="_blank">
-                  <img class="pretty-picture img-circle" src="{{bird.photo_url}}" alt="{{bird.scientific_name}} - {{bird.common_name}}" height="76" width="76"></a>
-                  {{bird.scientific_name}} - {{bird.common_name}}
-                <a href="{{bird.clip_url}}" target="_blank">
+                <a href="{{bird.photo_url}}" class="info-text">
+                  <img src="{{bird.photo_url}}" class="img-circle" alt="Image of {{bird.scientific_name}}" height="76" width="76"></a>
+                  {{bird.scientific_name}} {{bird.common_name}}
+                <a href="{{bird.clip_url}}">
                   <img src="assets/images/music_wh.png" height="20px"></a>
               </li>
             {{/each}}
@@ -97,9 +91,11 @@
     $("#direct").click(function(){
       if($(this).text()==='Hide Directions'){
         $('div.leaflet-routing-alternatives-container').hide();
+      // $('leaflet-routing-alt').animate({width:'100%'},'slow')
         $(this).text('Show Directions');
       }else{
         $('div.leaflet-routing-alternatives-container').show();
+      // $('.leaflet-routing-alt').animate({width: '50%'}, 'slow')
         $(this).text('Hide Directions');
       }
     });
