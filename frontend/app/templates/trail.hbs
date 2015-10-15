@@ -36,24 +36,6 @@
       </div>
 
       <div class="col-md-5 category-icons well">
-
-        <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <h1 class="modal-title" id="myModalLabel"></h1>
-              </div>
-              <div class="modal-body">
-                <img src="" id="imagepreview" style="width: 400px; height: 264px;" >
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <button class="icon" {{action 'filter' '.activities' }}><img src="assets/images/run-icon.png"></button>
         <button class="icon" {{action 'filter' '.birds' }}><img src="assets/images/duck-icon.png"></button>
         <button class="icon" {{action 'filter' '.animals' }}><img src="assets/images/animal.png"></button>
@@ -72,7 +54,8 @@
             <h3 class="sidebar-title">Animals</h3>
             {{#each animals as |animal|}}
               <li class="animal-info">
-                <img src="{{animal.photo_url}}" class="pretty-picture img-rounded" alt="{{animal.scientific_name}} - {{animal.common_name}}" width="152" height="118">
+                <a href="{{animal.photo_url}}" class="info-text" target="_blank">
+                <img src="{{animal.photo_url}}" class="pretty-picture img-rounded" alt="{{animal.scientific_name}} - {{animal.common_name}}" width="152" height="118"></a>
                 {{animal.scientific_name}} - {{animal.common_name}}</li>
             {{/each}}
           </ul>
@@ -81,7 +64,8 @@
             <h3 class="sidebar-title">Plants</h3>
             {{#each plants as |plant|}}
               <li class="animal-info">
-                <img src="{{plant.photo_url}}" class="pretty-picture img-rounded" alt="{{plant.scientific_name}} - {{plant.common_name}}" width="152" height="118">
+                <a href="{{plant.photo_url}}" class="info-text" target="_blank">
+                <img src="{{plant.photo_url}}" class="pretty-picture img-rounded" alt="{{plant.scientific_name}} - {{plant.common_name}}" width="152" height="118"></a>
                 {{plant.scientific_name}} - {{plant.common_name}}</li>
             {{/each}}
           </ul>
@@ -90,8 +74,8 @@
             <h3 class="sidebar-title">Birds</h3>
             {{#each birds as |bird|}}
               <li class="animal-info">
-                <!-- <a href="{{bird.photo_url}}" class="info-text" target="_blank"> -->
-                  <img class="pretty-picture img-circle" src="{{bird.photo_url}}" alt="{{bird.scientific_name}} - {{bird.common_name}}" height="76" width="76">
+                <a href="{{bird.photo_url}}" class="info-text" target="_blank">
+                  <img class="pretty-picture img-circle" src="{{bird.photo_url}}" alt="{{bird.scientific_name}} - {{bird.common_name}}" height="76" width="76"></a>
                   {{bird.scientific_name}} - {{bird.common_name}}
                 <a href="{{bird.clip_url}}" target="_blank">
                   <img src="assets/images/music_wh.png" height="20px"></a>
@@ -118,14 +102,6 @@
         $('div.leaflet-routing-alternatives-container').show();
         $(this).text('Hide Directions');
       }
-    });
-
-    $(".pretty-picture").each(function(){
-      $(this).click(function(){
-        // $('#imagepreview').attr('src', $(this).attr('src')); // here asign the image to the modal when the user click the enlarge link
-        $('.modal-title').text($(this).attr('alt')); // here asign animal name to the modal when the user click the picture
-        $('#imagemodal').modal('toggle'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
-      });
     });
 
   });
