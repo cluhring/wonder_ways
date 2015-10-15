@@ -2285,13 +2285,6 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
-        var el1 = dom.createElement("link");
-        dom.setAttribute(el1,"rel","stylesheet");
-        dom.setAttribute(el1,"href","//code.jquery.com/ui/1.8.10/themes/smoothness/jquery-ui.css");
-        dom.setAttribute(el1,"type","text/css");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
         var el1 = dom.createElement("script");
         dom.setAttribute(el1,"src","https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js");
         dom.appendChild(el0, el1);
@@ -2299,12 +2292,6 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("script");
         dom.setAttribute(el1,"src","assets/leaflet-routing-machine.min.js");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createElement("script");
-        dom.setAttribute(el1,"type","text/javascript");
-        dom.setAttribute(el1,"src","//ajax.aspnetcdn.com/ajax/jquery.ui/1.8.10/jquery-ui.min.js");
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
@@ -3457,7 +3444,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.7214313a"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.8d2b2956"});
 }
 
 /* jshint ignore:end */
