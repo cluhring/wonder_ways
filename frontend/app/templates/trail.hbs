@@ -14,20 +14,13 @@
       <h2>{{model.name}}</h2>
       <p class="trail-info">{{model.city}}, {{model.state}}</p>
       {{#if isDesc}}
-        <h3> Description <span> <button {{action 'closeDesc'}} class="btn-directions">X</button></span></h3>
-        <p class="trail-info">{{model.description}}</p>
+        <span> <button {{action 'closeDesc'}} class="trail-info btn-directions">Hide Description</button></span>
+        <p class="btn-direction trail-info">{{model.description}}</p>
       {{/if}}
-      {{#if isDirections}}
-        <h3>Directions <span> <button {{action 'closeDirections'}} class="btn-directions">X</button></span></h3>
-        <p class="trail-info">{{model.directions}}</p>
-      {{/if}}
-
-      {{#unless isDirections}}
-        <button {{action 'expandDirections'}} class="btn-directions">Directions</button>
-      {{/unless}}
       {{#unless isDesc}}
-        <button {{action 'expandDesc'}} class="btn-directions">Description</button>
+        <button {{action 'expandDesc'}} class="trail-info btn-directions">Show Description</button>
       {{/unless}}
+      <button class="trail-info btn-directions" id="direct">Hide Directions</button>
     </div>
     <div class="col-md-3">
       <h2> Trail Information </h2>
@@ -43,6 +36,24 @@
       </div>
 
       <div class="col-md-5 category-icons well">
+
+        <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h1 class="modal-title" id="myModalLabel"></h1>
+              </div>
+              <div class="modal-body">
+                <img src="" id="imagepreview" style="width: 400px; height: 264px;" >
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <button class="icon" {{action 'filter' '.activities' }}><img src="assets/images/run-icon.png"></button>
         <button class="icon" {{action 'filter' '.birds' }}><img src="assets/images/duck-icon.png"></button>
         <button class="icon" {{action 'filter' '.animals' }}><img src="assets/images/animal.png"></button>
@@ -53,21 +64,25 @@
             <li>Trail Length: {{model.length}}</li>
             <li>{{trailActivities.firstObject.activity_description}}</li>
             {{#each activity in model.activities}}
-              <li><a href="{{activity.url}}" class="info-text">{{activity.activity_type_name}}</a></li>
+              <li><a href="{{activity.url}}" target="_blank" class="info-text">{{activity.activity_type_name}}</a></li>
             {{/each}}
           </ul>
 
           <ul class="animals categoryType" hidden=true>
             <h3 class="sidebar-title">Animals</h3>
             {{#each animals as |animal|}}
-              <li class="animal-info"><a href="{{animal.photo_url}}" class="info-text"> <img src="{{animal.photo_url}}" class="img-rounded" alt="Photo of {{animal.scientific_name}}" width="152" height="118"></a> {{animal.scientific_name}} {{animal.common_name}}</li>
+              <li class="animal-info">
+                <img src="{{animal.photo_url}}" class="pretty-picture img-rounded" alt="{{animal.scientific_name}} - {{animal.common_name}}" width="152" height="118">
+                {{animal.scientific_name}} - {{animal.common_name}}</li>
             {{/each}}
           </ul>
 
           <ul class="plants categoryType" hidden=true>
             <h3 class="sidebar-title">Plants</h3>
             {{#each plants as |plant|}}
-              <li class="animal-info"><a href="{{plant.photo_url}}" class="info-text"><img src="{{plant.photo_url}}" class="img-rounded" alt="Photo of {{plant.scientific_name}}" width="152" height="118"></a> {{plant.scientific_name}} {{plant.common_name}}</li>
+              <li class="animal-info">
+                <img src="{{plant.photo_url}}" class="pretty-picture img-rounded" alt="{{plant.scientific_name}} - {{plant.common_name}}" width="152" height="118">
+                {{plant.scientific_name}} - {{plant.common_name}}</li>
             {{/each}}
           </ul>
 
@@ -75,10 +90,10 @@
             <h3 class="sidebar-title">Birds</h3>
             {{#each birds as |bird|}}
               <li class="animal-info">
-                <a href="{{bird.photo_url}}" class="info-text">
-                  <img src="{{bird.photo_url}}" class="img-circle" alt="Image of {{bird.scientific_name}}" height="76" width="76"></a>
-                  {{bird.scientific_name}} {{bird.common_name}}
-                <a href="{{bird.clip_url}}">
+                <!-- <a href="{{bird.photo_url}}" class="info-text" target="_blank"> -->
+                  <img class="pretty-picture img-circle" src="{{bird.photo_url}}" alt="{{bird.scientific_name}} - {{bird.common_name}}" height="76" width="76">
+                  {{bird.scientific_name}} - {{bird.common_name}}
+                <a href="{{bird.clip_url}}" target="_blank">
                   <img src="assets/images/music_wh.png" height="20px"></a>
               </li>
             {{/each}}
@@ -92,3 +107,26 @@
 <link rel="stylesheet" href="assets/leaflet-routing-machine.css" />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'></script>
 <script src="assets/leaflet-routing-machine.min.js"></script>
+<script charset="utf-8">
+  $(document).ready(function(){
+
+    $("#direct").click(function(){
+      if($(this).text()==='Hide Directions'){
+        $('div.leaflet-routing-alternatives-container').hide();
+        $(this).text('Show Directions');
+      }else{
+        $('div.leaflet-routing-alternatives-container').show();
+        $(this).text('Hide Directions');
+      }
+    });
+
+    $(".pretty-picture").each(function(){
+      $(this).click(function(){
+        $('#imagepreview').attr('src', $(this).attr('src')); // here asign the image to the modal when the user click the enlarge link
+        $('.modal-title').text($(this).attr('alt')); // here asign animal name to the modal when the user click the picture
+        $('#imagemodal').modal('toggle'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
+      });
+    });
+
+  });
+</script>
