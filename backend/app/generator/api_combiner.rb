@@ -23,7 +23,7 @@ module ApiCombiner
           scientific_name: species["species"].capitalize,
           common_name: species["vernacularName"],
           photo_url: img,
-          clip_url: xeno_canto.species_recording(species["species"]).slice!(/^[https:]+/),
+          clip_url: xeno_canto.species_recording(species["species"]),
           lat: species["decimalLatitude"],
           lng: species["decimalLongitude"])
       end
@@ -47,7 +47,7 @@ module ApiCombiner
           scientific_name: "#{species['gen']} #{species['sp']}",
           common_name: species["en"],
           photo_url: img,
-          clip_url: species["file"].slice!(/^[https:]+/),
+          clip_url: species["file"],
           lat: species["lat"],
           lng: species["lng"])
       end
