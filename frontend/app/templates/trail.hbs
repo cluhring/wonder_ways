@@ -1,6 +1,8 @@
 <div class="row">
   <div class="col-md-1">
-    <a href="/{{model.state}}"><img src="assets/images/back-button.png" class="back-button"></a>
+    {{#link-to 'trails' model.state}}
+      <img src="assets/images/back-button.png" class="back-button">
+     {{/link-to}}
   </div>
   <div class="col-md-5">
     {{#link-to 'index'}}
@@ -72,8 +74,7 @@
             <h3 class="sidebar-title">Animals</h3>
             {{#each animals as |animal|}}
               <li class="animal-info">
-                <img src="{{animal.photo_url}}" class="pretty-picture img-rounded" alt="{{animal.scientific_name}} - {{animal.common_name}}" width="152" height="118">
-                {{animal.scientific_name}} - {{animal.common_name}}</li>
+                <img src="{{animal.photo_url}}" class="pretty-picture img-rounded" alt="{{animal.scientific_name}}" title="{{animal.common_name}}" width="152" height="118"></li>
             {{/each}}
           </ul>
 
@@ -81,8 +82,7 @@
             <h3 class="sidebar-title">Plants</h3>
             {{#each plants as |plant|}}
               <li class="animal-info">
-                <img src="{{plant.photo_url}}" class="pretty-picture img-rounded" alt="{{plant.scientific_name}} - {{plant.common_name}}" width="152" height="118">
-                {{plant.scientific_name}} - {{plant.common_name}}</li>
+                <img src="{{plant.photo_url}}" class="pretty-picture img-rounded" alt="{{plant.scientific_name}}" title="{{plant.common_name}}" width="152" height="118"></li>
             {{/each}}
           </ul>
 
@@ -90,8 +90,7 @@
             <h3 class="sidebar-title">Birds</h3>
             {{#each birds as |bird|}}
               <li class="animal-info">
-                  <img class="pretty-picture img-circle" src="{{bird.photo_url}}" alt="{{bird.scientific_name}} - {{bird.common_name}}" height="76" width="76">
-                  {{bird.scientific_name}} - {{bird.common_name}}
+                  <img class="pretty-picture img-circle" src="{{bird.photo_url}}" alt="{{bird.scientific_name}}" title="{{bird.common_name}}" height="76" width="76">
                 <a href="{{bird.clip_url}}" target="_blank">
                   <img src="assets/images/music_wh.png" height="20px"></a>
               </li>
@@ -104,6 +103,7 @@
 </div>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css' rel='stylesheet' />
 <link rel="stylesheet" href="assets/leaflet-routing-machine.css" />
+<link rel="stylesheet" href="assets/mycss.css" />
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'></script>
 <script src="assets/leaflet-routing-machine.min.js"></script>
 <script src="assets/myjs.js"></script>
