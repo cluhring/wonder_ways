@@ -8,7 +8,7 @@ $(document).ready(function(){
       $(this).text('Hide Directions');
     }
   });
-  
+
   $(".pretty-picture").each(function(){
     $(this).click(function(){
       $('#imagepreview').attr('src', $(this).attr('src')); // here asign the image to the modal when the user click the enlarge link

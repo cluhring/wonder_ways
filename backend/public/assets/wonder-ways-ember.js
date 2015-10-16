@@ -1704,7 +1704,7 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
           var el2 = dom.createTextNode("\n                ");
           dom.appendChild(el1, el2);
           var el2 = dom.createElement("img");
-          dom.setAttribute(el2,"class","img-rounded");
+          dom.setAttribute(el2,"class","pretty-picture img-rounded");
           dom.setAttribute(el2,"width","152");
           dom.setAttribute(el2,"height","118");
           dom.appendChild(el1, el2);
@@ -1712,7 +1712,7 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
           dom.appendChild(el1, el2);
           var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode(" ");
+          var el2 = dom.createTextNode(" - ");
           dom.appendChild(el1, el2);
           var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
@@ -1749,7 +1749,7 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
           var morph1 = dom.createMorphAt(element5,5,5);
           set(env, context, "animal", blockArguments[0]);
           attribute(env, attrMorph0, element6, "src", concat(env, [get(env, context, "animal.photo_url")]));
-          attribute(env, attrMorph1, element6, "alt", concat(env, ["Photo of ", get(env, context, "animal.scientific_name")]));
+          attribute(env, attrMorph1, element6, "alt", concat(env, [get(env, context, "animal.scientific_name"), " - ", get(env, context, "animal.common_name")]));
           content(env, morph0, context, "animal.scientific_name");
           content(env, morph1, context, "animal.common_name");
           return fragment;
@@ -1772,7 +1772,7 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
           var el2 = dom.createTextNode("\n                ");
           dom.appendChild(el1, el2);
           var el2 = dom.createElement("img");
-          dom.setAttribute(el2,"class","img-rounded");
+          dom.setAttribute(el2,"class","pretty-picture img-rounded");
           dom.setAttribute(el2,"width","152");
           dom.setAttribute(el2,"height","118");
           dom.appendChild(el1, el2);
@@ -1780,7 +1780,7 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
           dom.appendChild(el1, el2);
           var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode(" ");
+          var el2 = dom.createTextNode(" - ");
           dom.appendChild(el1, el2);
           var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
@@ -1817,7 +1817,7 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
           var morph1 = dom.createMorphAt(element3,5,5);
           set(env, context, "plant", blockArguments[0]);
           attribute(env, attrMorph0, element4, "src", concat(env, [get(env, context, "plant.photo_url")]));
-          attribute(env, attrMorph1, element4, "alt", concat(env, ["Photo of ", get(env, context, "plant.scientific_name")]));
+          attribute(env, attrMorph1, element4, "alt", concat(env, [get(env, context, "plant.scientific_name"), " - ", get(env, context, "plant.common_name")]));
           content(env, morph0, context, "plant.scientific_name");
           content(env, morph1, context, "plant.common_name");
           return fragment;
@@ -1837,18 +1837,18 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
           dom.appendChild(el0, el1);
           var el1 = dom.createElement("li");
           dom.setAttribute(el1,"class","animal-info");
-          var el2 = dom.createTextNode("\n                ");
+          var el2 = dom.createTextNode("\n                  ");
           dom.appendChild(el1, el2);
           var el2 = dom.createElement("img");
-          dom.setAttribute(el2,"class","img-circle");
+          dom.setAttribute(el2,"class","pretty-picture img-circle");
           dom.setAttribute(el2,"height","76");
           dom.setAttribute(el2,"width","76");
           dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n                ");
+          var el2 = dom.createTextNode("\n                  ");
           dom.appendChild(el1, el2);
           var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode(" ");
+          var el2 = dom.createTextNode(" - ");
           dom.appendChild(el1, el2);
           var el2 = dom.createComment("");
           dom.appendChild(el1, el2);
@@ -1900,7 +1900,7 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
           var attrMorph2 = dom.createAttrMorph(element2, 'href');
           set(env, context, "bird", blockArguments[0]);
           attribute(env, attrMorph0, element1, "src", concat(env, [get(env, context, "bird.photo_url")]));
-          attribute(env, attrMorph1, element1, "alt", concat(env, ["Image of ", get(env, context, "bird.scientific_name")]));
+          attribute(env, attrMorph1, element1, "alt", concat(env, [get(env, context, "bird.scientific_name"), " - ", get(env, context, "bird.common_name")]));
           content(env, morph0, context, "bird.scientific_name");
           content(env, morph1, context, "bird.common_name");
           attribute(env, attrMorph2, element2, "href", concat(env, [get(env, context, "bird.clip_url")]));
@@ -3438,7 +3438,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.f93b2ec0"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.68418111"});
 }
 
 /* jshint ignore:end */
