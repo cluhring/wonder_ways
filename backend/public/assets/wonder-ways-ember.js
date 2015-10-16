@@ -139,8 +139,8 @@ define('wonder-ways-ember/components/trail-map', ['exports', 'ember'], function 
 
       var map = L.mapbox.map(this.elementId, "cluhring.lal7c6c3");
 
-      L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
-        attribution: "&copy; <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
+      L.tileLayer("https://{s}.tile.osm.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; <a href=\"https://osm.org/copyright\">OpenStreetMap</a> contributors"
       }).addTo(map);
 
       this.set("map", map);
@@ -203,18 +203,6 @@ define('wonder-ways-ember/components/trail-map', ['exports', 'ember'], function 
         e.layer.closePopup();
       });
     }
-  });
-
-  $(document).ready(function () {
-    $("#direct").click(function () {
-      if ($(this).text() === "Hide Directions") {
-        $("div.leaflet-routing-alternatives-container").hide();
-        $(this).text("Show Directions");
-      } else {
-        $("div.leaflet-routing-alternatives-container").show();
-        $(this).text("Hide Directions");
-      }
-    });
   });
 
   // formatter: new L.Routing.Valhalla.Formatter({units:'imperial'})
@@ -2239,6 +2227,7 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("script");
+        dom.setAttribute(el1,"charset","utf-8");
         var el2 = dom.createTextNode("\n  $(document).ready(function(){\n    $(\"#direct\").click(function(){\n      if($(this).text()==='Hide Directions'){\n        $('div.leaflet-routing-alternatives-container').hide();\n        $(this).text('Show Directions');\n      }else{\n        $('div.leaflet-routing-alternatives-container').show();\n        $(this).text('Hide Directions');\n      }\n    });\n  });\n");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
@@ -2887,7 +2876,7 @@ define('wonder-ways-ember/tests/components/trail-map.jshint', function () {
 
   module('JSHint - components');
   test('components/trail-map.js should pass jshint', function() { 
-    ok(false, 'components/trail-map.js should pass jshint.\ncomponents/trail-map.js: line 90, col 1, \'$\' is not defined.\ncomponents/trail-map.js: line 91, col 3, \'$\' is not defined.\ncomponents/trail-map.js: line 92, col 8, \'$\' is not defined.\ncomponents/trail-map.js: line 93, col 7, \'$\' is not defined.\ncomponents/trail-map.js: line 94, col 7, \'$\' is not defined.\ncomponents/trail-map.js: line 96, col 7, \'$\' is not defined.\ncomponents/trail-map.js: line 97, col 7, \'$\' is not defined.\ncomponents/trail-map.js: line 49, col 11, \'ctrl\' is defined but never used.\ncomponents/trail-map.js: line 64, col 11, \'marker\' is defined but never used.\n\n9 errors'); 
+    ok(false, 'components/trail-map.js should pass jshint.\ncomponents/trail-map.js: line 49, col 11, \'ctrl\' is defined but never used.\ncomponents/trail-map.js: line 64, col 11, \'marker\' is defined but never used.\n\n2 errors'); 
   });
 
 });
@@ -3386,7 +3375,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.53aecc02"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.c548faf6"});
 }
 
 /* jshint ignore:end */
