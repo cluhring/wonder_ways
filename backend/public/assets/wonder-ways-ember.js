@@ -345,7 +345,7 @@ define('wonder-ways-ember/controllers/index', ['exports', 'ember'], function (ex
       } },
 
     searchTerm: "",
-    // selectedState: '',
+    selectedState: '',
     allStates: ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"] });
 
 });
@@ -2845,8 +2845,8 @@ define('wonder-ways-ember/tests/app.jshint', function () {
   'use strict';
 
   module('JSHint - .');
-  test('app.js should pass jshint', function() { 
-    ok(true, 'app.js should pass jshint.'); 
+  test('app.js should pass jshint', function() {
+    ok(true, 'app.js should pass jshint.');
   });
 
 });
@@ -2855,8 +2855,8 @@ define('wonder-ways-ember/tests/components/index-map.jshint', function () {
   'use strict';
 
   module('JSHint - components');
-  test('components/index-map.js should pass jshint', function() { 
-    ok(false, 'components/index-map.js should pass jshint.\ncomponents/index-map.js: line 42, col 20, Missing semicolon.\n\n1 error'); 
+  test('components/index-map.js should pass jshint', function() {
+    ok(false, 'components/index-map.js should pass jshint.\ncomponents/index-map.js: line 42, col 20, Missing semicolon.\n\n1 error');
   });
 
 });
@@ -2865,8 +2865,8 @@ define('wonder-ways-ember/tests/components/state-info.jshint', function () {
   'use strict';
 
   module('JSHint - components');
-  test('components/state-info.js should pass jshint', function() { 
-    ok(false, 'components/state-info.js should pass jshint.\ncomponents/state-info.js: line 55, col 1, \'module\' is not defined.\ncomponents/state-info.js: line 55, col 18, \'data\' is not defined.\ncomponents/state-info.js: line 1, col 5, \'statesData\' is defined but never used.\n\n3 errors'); 
+  test('components/state-info.js should pass jshint', function() {
+    ok(false, 'components/state-info.js should pass jshint.\ncomponents/state-info.js: line 55, col 1, \'module\' is not defined.\ncomponents/state-info.js: line 55, col 18, \'data\' is not defined.\ncomponents/state-info.js: line 1, col 5, \'statesData\' is defined but never used.\n\n3 errors');
   });
 
 });
@@ -2875,8 +2875,8 @@ define('wonder-ways-ember/tests/components/trail-map.jshint', function () {
   'use strict';
 
   module('JSHint - components');
-  test('components/trail-map.js should pass jshint', function() { 
-    ok(false, 'components/trail-map.js should pass jshint.\ncomponents/trail-map.js: line 49, col 11, \'ctrl\' is defined but never used.\ncomponents/trail-map.js: line 64, col 11, \'marker\' is defined but never used.\n\n2 errors'); 
+  test('components/trail-map.js should pass jshint', function() {
+    ok(false, 'components/trail-map.js should pass jshint.\ncomponents/trail-map.js: line 49, col 11, \'ctrl\' is defined but never used.\ncomponents/trail-map.js: line 64, col 11, \'marker\' is defined but never used.\n\n2 errors');
   });
 
 });
@@ -2885,8 +2885,8 @@ define('wonder-ways-ember/tests/components/us-map.jshint', function () {
   'use strict';
 
   module('JSHint - components');
-  test('components/us-map.js should pass jshint', function() { 
-    ok(false, 'components/us-map.js should pass jshint.\ncomponents/us-map.js: line 133, col 6, Missing semicolon.\ncomponents/us-map.js: line 142, col 28, \'map\' is defined but never used.\ncomponents/us-map.js: line 163, col 11, \'labels\' is defined but never used.\ncomponents/us-map.js: line 159, col 30, \'map\' is defined but never used.\n\n4 errors'); 
+  test('components/us-map.js should pass jshint', function() {
+    ok(false, 'components/us-map.js should pass jshint.\ncomponents/us-map.js: line 133, col 6, Missing semicolon.\ncomponents/us-map.js: line 142, col 28, \'map\' is defined but never used.\ncomponents/us-map.js: line 163, col 11, \'labels\' is defined but never used.\ncomponents/us-map.js: line 159, col 30, \'map\' is defined but never used.\n\n4 errors');
   });
 
 });
@@ -2895,8 +2895,8 @@ define('wonder-ways-ember/tests/controllers/index.jshint', function () {
   'use strict';
 
   module('JSHint - controllers');
-  test('controllers/index.js should pass jshint', function() { 
-    ok(true, 'controllers/index.js should pass jshint.'); 
+  test('controllers/index.js should pass jshint', function() {
+    ok(true, 'controllers/index.js should pass jshint.');
   });
 
 });
@@ -2905,8 +2905,8 @@ define('wonder-ways-ember/tests/controllers/trail.jshint', function () {
   'use strict';
 
   module('JSHint - controllers');
-  test('controllers/trail.js should pass jshint', function() { 
-    ok(true, 'controllers/trail.js should pass jshint.'); 
+  test('controllers/trail.js should pass jshint', function() {
+    ok(true, 'controllers/trail.js should pass jshint.');
   });
 
 });
@@ -2915,8 +2915,8 @@ define('wonder-ways-ember/tests/controllers/trails/index.jshint', function () {
   'use strict';
 
   module('JSHint - controllers/trails');
-  test('controllers/trails/index.js should pass jshint', function() { 
-    ok(true, 'controllers/trails/index.js should pass jshint.'); 
+  test('controllers/trails/index.js should pass jshint', function() {
+    ok(true, 'controllers/trails/index.js should pass jshint.');
   });
 
 });
@@ -2939,8 +2939,8 @@ define('wonder-ways-ember/tests/helpers/resolver.jshint', function () {
   'use strict';
 
   module('JSHint - helpers');
-  test('helpers/resolver.js should pass jshint', function() { 
-    ok(true, 'helpers/resolver.js should pass jshint.'); 
+  test('helpers/resolver.js should pass jshint', function() {
+    ok(true, 'helpers/resolver.js should pass jshint.');
   });
 
 });
@@ -2972,8 +2972,8 @@ define('wonder-ways-ember/tests/helpers/start-app.jshint', function () {
   'use strict';
 
   module('JSHint - helpers');
-  test('helpers/start-app.js should pass jshint', function() { 
-    ok(true, 'helpers/start-app.js should pass jshint.'); 
+  test('helpers/start-app.js should pass jshint', function() {
+    ok(true, 'helpers/start-app.js should pass jshint.');
   });
 
 });
@@ -2982,8 +2982,8 @@ define('wonder-ways-ember/tests/models/activity.jshint', function () {
   'use strict';
 
   module('JSHint - models');
-  test('models/activity.js should pass jshint', function() { 
-    ok(true, 'models/activity.js should pass jshint.'); 
+  test('models/activity.js should pass jshint', function() {
+    ok(true, 'models/activity.js should pass jshint.');
   });
 
 });
@@ -2992,8 +2992,8 @@ define('wonder-ways-ember/tests/models/species.jshint', function () {
   'use strict';
 
   module('JSHint - models');
-  test('models/species.js should pass jshint', function() { 
-    ok(true, 'models/species.js should pass jshint.'); 
+  test('models/species.js should pass jshint', function() {
+    ok(true, 'models/species.js should pass jshint.');
   });
 
 });
@@ -3002,8 +3002,8 @@ define('wonder-ways-ember/tests/models/trail.jshint', function () {
   'use strict';
 
   module('JSHint - models');
-  test('models/trail.js should pass jshint', function() { 
-    ok(true, 'models/trail.js should pass jshint.'); 
+  test('models/trail.js should pass jshint', function() {
+    ok(true, 'models/trail.js should pass jshint.');
   });
 
 });
@@ -3012,8 +3012,8 @@ define('wonder-ways-ember/tests/router.jshint', function () {
   'use strict';
 
   module('JSHint - .');
-  test('router.js should pass jshint', function() { 
-    ok(true, 'router.js should pass jshint.'); 
+  test('router.js should pass jshint', function() {
+    ok(true, 'router.js should pass jshint.');
   });
 
 });
@@ -3022,8 +3022,8 @@ define('wonder-ways-ember/tests/routes/trail.jshint', function () {
   'use strict';
 
   module('JSHint - routes');
-  test('routes/trail.js should pass jshint', function() { 
-    ok(true, 'routes/trail.js should pass jshint.'); 
+  test('routes/trail.js should pass jshint', function() {
+    ok(true, 'routes/trail.js should pass jshint.');
   });
 
 });
@@ -3032,8 +3032,8 @@ define('wonder-ways-ember/tests/routes/trails.jshint', function () {
   'use strict';
 
   module('JSHint - routes');
-  test('routes/trails.js should pass jshint', function() { 
-    ok(true, 'routes/trails.js should pass jshint.'); 
+  test('routes/trails.js should pass jshint', function() {
+    ok(true, 'routes/trails.js should pass jshint.');
   });
 
 });
@@ -3049,8 +3049,8 @@ define('wonder-ways-ember/tests/test-helper.jshint', function () {
   'use strict';
 
   module('JSHint - .');
-  test('test-helper.js should pass jshint', function() { 
-    ok(true, 'test-helper.js should pass jshint.'); 
+  test('test-helper.js should pass jshint', function() {
+    ok(true, 'test-helper.js should pass jshint.');
   });
 
 });
@@ -3081,8 +3081,8 @@ define('wonder-ways-ember/tests/unit/components/trail-map-test.jshint', function
   'use strict';
 
   module('JSHint - unit/components');
-  test('unit/components/trail-map-test.js should pass jshint', function() { 
-    ok(true, 'unit/components/trail-map-test.js should pass jshint.'); 
+  test('unit/components/trail-map-test.js should pass jshint', function() {
+    ok(true, 'unit/components/trail-map-test.js should pass jshint.');
   });
 
 });
@@ -3113,8 +3113,8 @@ define('wonder-ways-ember/tests/unit/components/us-map-test.jshint', function ()
   'use strict';
 
   module('JSHint - unit/components');
-  test('unit/components/us-map-test.js should pass jshint', function() { 
-    ok(true, 'unit/components/us-map-test.js should pass jshint.'); 
+  test('unit/components/us-map-test.js should pass jshint', function() {
+    ok(true, 'unit/components/us-map-test.js should pass jshint.');
   });
 
 });
@@ -3139,8 +3139,8 @@ define('wonder-ways-ember/tests/unit/controllers/trail-test.jshint', function ()
   'use strict';
 
   module('JSHint - unit/controllers');
-  test('unit/controllers/trail-test.js should pass jshint', function() { 
-    ok(true, 'unit/controllers/trail-test.js should pass jshint.'); 
+  test('unit/controllers/trail-test.js should pass jshint', function() {
+    ok(true, 'unit/controllers/trail-test.js should pass jshint.');
   });
 
 });
@@ -3165,8 +3165,8 @@ define('wonder-ways-ember/tests/unit/controllers/trails/index-test.jshint', func
   'use strict';
 
   module('JSHint - unit/controllers/trails');
-  test('unit/controllers/trails/index-test.js should pass jshint', function() { 
-    ok(true, 'unit/controllers/trails/index-test.js should pass jshint.'); 
+  test('unit/controllers/trails/index-test.js should pass jshint', function() {
+    ok(true, 'unit/controllers/trails/index-test.js should pass jshint.');
   });
 
 });
@@ -3191,8 +3191,8 @@ define('wonder-ways-ember/tests/unit/models/activity-test.jshint', function () {
   'use strict';
 
   module('JSHint - unit/models');
-  test('unit/models/activity-test.js should pass jshint', function() { 
-    ok(true, 'unit/models/activity-test.js should pass jshint.'); 
+  test('unit/models/activity-test.js should pass jshint', function() {
+    ok(true, 'unit/models/activity-test.js should pass jshint.');
   });
 
 });
@@ -3217,8 +3217,8 @@ define('wonder-ways-ember/tests/unit/models/species-test.jshint', function () {
   'use strict';
 
   module('JSHint - unit/models');
-  test('unit/models/species-test.js should pass jshint', function() { 
-    ok(true, 'unit/models/species-test.js should pass jshint.'); 
+  test('unit/models/species-test.js should pass jshint', function() {
+    ok(true, 'unit/models/species-test.js should pass jshint.');
   });
 
 });
@@ -3292,8 +3292,8 @@ define('wonder-ways-ember/tests/unit/models/trail-test.jshint', function () {
   'use strict';
 
   module('JSHint - unit/models');
-  test('unit/models/trail-test.js should pass jshint', function() { 
-    ok(true, 'unit/models/trail-test.js should pass jshint.'); 
+  test('unit/models/trail-test.js should pass jshint', function() {
+    ok(true, 'unit/models/trail-test.js should pass jshint.');
   });
 
 });
@@ -3317,8 +3317,8 @@ define('wonder-ways-ember/tests/unit/routes/trail-test.jshint', function () {
   'use strict';
 
   module('JSHint - unit/routes');
-  test('unit/routes/trail-test.js should pass jshint', function() { 
-    ok(true, 'unit/routes/trail-test.js should pass jshint.'); 
+  test('unit/routes/trail-test.js should pass jshint', function() {
+    ok(true, 'unit/routes/trail-test.js should pass jshint.');
   });
 
 });
@@ -3342,8 +3342,8 @@ define('wonder-ways-ember/tests/unit/routes/trails-test.jshint', function () {
   'use strict';
 
   module('JSHint - unit/routes');
-  test('unit/routes/trails-test.js should pass jshint', function() { 
-    ok(true, 'unit/routes/trails-test.js should pass jshint.'); 
+  test('unit/routes/trails-test.js should pass jshint', function() {
+    ok(true, 'unit/routes/trails-test.js should pass jshint.');
   });
 
 });
