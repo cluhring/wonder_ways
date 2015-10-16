@@ -28,4 +28,16 @@ $(document).ready(function(){
       $('#imagemodal').modal('toggle'); // imagemodal is the id attribute assigned to the bootstrap modal, then i use the show function
     });
   });
+
+  $(".music-notes").each(function() {
+    $(this).mouseover(function() {
+      $(this).attr('src', $(this).attr('title'));
+    });
+  });
+
+  $(".music-notes").each(function() {
+    $(this).mouseout(function() {
+      $(this).attr('src', $(this).attr('alt'));
+    });
+  });
 });
