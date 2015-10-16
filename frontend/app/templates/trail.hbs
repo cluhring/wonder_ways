@@ -1,3 +1,16 @@
+<script charset="utf-8">
+  $(document).ready(function(){
+    $("#direct").click(function(){
+      if($(this).text()==='Hide Directions'){
+        $('div.leaflet-routing-alternatives-container').hide();
+        $(this).text('Show Directions');
+      }else{
+        $('div.leaflet-routing-alternatives-container').show();
+        $(this).text('Hide Directions');
+      }
+    });
+  });
+</script>
 <div class="row">
   <div class="col-md-1">
     <a href="/{{model.state}}"><img src="assets/images/back-button.png" class="back-button"></a>
@@ -83,18 +96,5 @@
 </div>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.css' rel='stylesheet' />
 <link rel="stylesheet" href="assets/leaflet-routing-machine.css" />
-<script charset="utf-8">
-  $(document).ready(function(){
-    $("#direct").click(function(){
-      if($(this).text()==='Hide Directions'){
-        $('div.leaflet-routing-alternatives-container').hide();
-        $(this).text('Show Directions');
-      }else{
-        $('div.leaflet-routing-alternatives-container').show();
-        $(this).text('Hide Directions');
-      }
-    });
-  });
-</script>
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.8/mapbox.js'></script>
 <script src="assets/leaflet-routing-machine.min.js"></script>
