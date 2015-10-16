@@ -178,6 +178,10 @@ a.search-btn:hover {
   margin-bottom: 50px;
 }
 
+.categoryType {
+  text-align: center;
+}
+
 .all {
   margin-top: 20px;
 }
@@ -200,13 +204,12 @@ a.search-btn:hover {
   margin-left: 5px;
   margin-right: 5px;
   margin-bottom:20px;
+  padding: 8px;
 }
 
 button.icon:hover {
+  border-radius: 50%;
   background: rgba(91, 204, 208, 0.57);
-  height: 100px;
-  width: 100px;
-  border-radius: 50px;
 }
 
 .big-well {
@@ -303,4 +306,47 @@ div.state-results a.ember-view {
 .state-results-location {
   font-size: 20px;
   color: purple;
+}
+
+.modal-header {
+  color: blue;
+  text-align: center
+}
+
+.modal-body {
+  text-align: center
+}
+
+.birdies {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.bird-pics {
+  padding: 8px;
+  width: 11em;
+  height: 10em;
+}
+
+.bird-pics:hover {
+  background: rgba(91, 204, 208, 0.57);
+}
+
+.music-note {
+  padding: 15px;
+}
+
+.they-live {
+  margin-left: auto;
+  margin-right: auto
+}
+
+.they-all-live {
+  padding: 8px;
+  width: 11em;
+  height: 10em;
+}
+
+.they-all-live:hover {
+  background: rgba(91, 204, 208, 0.57);
 }
