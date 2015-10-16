@@ -139,8 +139,8 @@ define('wonder-ways-ember/components/trail-map', ['exports', 'ember'], function 
 
       var map = L.mapbox.map(this.elementId, "cluhring.lal7c6c3");
 
-      L.tileLayer("https://{s}.tile.osm.org/{z}/{x}/{y}.png", {
-        attribution: "&copy; <a href=\"https://osm.org/copyright\">OpenStreetMap</a> contributors"
+      L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
       }).addTo(map);
 
       this.set("map", map);
@@ -3373,7 +3373,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.b88b609b"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.55cce2c6"});
 }
 
 /* jshint ignore:end */
