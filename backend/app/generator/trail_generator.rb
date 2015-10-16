@@ -1,7 +1,7 @@
 class TrailGenerator
   def self.save_trails(data)
     data.each do |trail|
-      if trail["lat"] != 0 && trail["description"] != ""
+      if trail["lat"] != 0 && trail["description"] != nil
         saved_trail = Trail.find_or_create_by(unique_id: trail["unique_id"]) do |t|
           t.name        = trail["name"]
           t.city        = trail["city"]
