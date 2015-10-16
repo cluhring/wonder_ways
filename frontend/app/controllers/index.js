@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
   },
 
   searchTerm: '',
-  // selectedState: '',
+  selectedState: '',
   allStates: ["Alabama",
   "Alaska",
   "Arizona",
