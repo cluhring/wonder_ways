@@ -357,7 +357,7 @@ define('wonder-ways-ember/controllers/index', ['exports', 'ember'], function (ex
       } },
 
     searchTerm: "",
-    // selectedState: '',
+    selectedState: "",
     allStates: ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"] });
 
 });
@@ -1949,13 +1949,6 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
       hasRendered: false,
       build: function build(dom) {
         var el0 = dom.createDocumentFragment();
-        var el1 = dom.createElement("script");
-        dom.setAttribute(el1,"charset","utf-8");
-        var el2 = dom.createTextNode("\n  $(document).ready(function(){\n    $(\"#direct\").click(function(){\n      if($(this).text()==='Hide Directions'){\n        $('div.leaflet-routing-alternatives-container').hide();\n        $(this).text('Show Directions');\n      }else{\n        $('div.leaflet-routing-alternatives-container').show();\n        $(this).text('Hide Directions');\n      }\n    });\n  });\n");
-        dom.appendChild(el1, el2);
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
         var el1 = dom.createElement("div");
         dom.setAttribute(el1,"class","row");
         var el2 = dom.createTextNode("\n  ");
@@ -2245,6 +2238,13 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
+        var el1 = dom.createElement("script");
+        dom.setAttribute(el1,"charset","utf-8");
+        var el2 = dom.createTextNode("\n  $(document).ready(function(){\n    $(\"#direct\").click(function(){\n      if($(this).text()==='Hide Directions'){\n        $('div.leaflet-routing-alternatives-container').hide();\n        $(this).text('Show Directions');\n      }else{\n        $('div.leaflet-routing-alternatives-container').show();\n        $(this).text('Hide Directions');\n      }\n    });\n  });\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
         return el0;
       },
       render: function render(context, env, contextualElement) {
@@ -2267,9 +2267,9 @@ define('wonder-ways-ember/templates/trail', ['exports'], function (exports) {
         } else {
           fragment = this.build(dom);
         }
-        var element13 = dom.childAt(fragment, [2]);
+        var element13 = dom.childAt(fragment, [0]);
         var element14 = dom.childAt(element13, [1, 1]);
-        var element15 = dom.childAt(fragment, [4]);
+        var element15 = dom.childAt(fragment, [2]);
         var element16 = dom.childAt(element15, [1, 1]);
         var element17 = dom.childAt(element16, [3]);
         var element18 = dom.childAt(element15, [3, 1]);
@@ -3387,7 +3387,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.88a91be1"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.a66f0fc9"});
 }
 
 /* jshint ignore:end */
