@@ -13,8 +13,8 @@ export default Ember.Component.extend({
 
     let map = L.mapbox.map(this.elementId, 'cluhring.lal7c6c3');
 
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    L.tileLayer('https://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
     this.set('map', map);
@@ -85,16 +85,4 @@ export default Ember.Component.extend({
       e.layer.closePopup();
     });
   }
-});
-
-$(document).ready(function(){
-  $("#direct").click(function(){
-    if($(this).text()==='Hide Directions'){
-      $('div.leaflet-routing-alternatives-container').hide();
-      $(this).text('Show Directions');
-    }else{
-      $('div.leaflet-routing-alternatives-container').show();
-      $(this).text('Hide Directions');
-    }
-  });
 });
