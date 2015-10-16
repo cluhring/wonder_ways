@@ -260,3 +260,7 @@
         height: 100%;
     }
 }
+
+.modal-header {
+  color: red;
+}
