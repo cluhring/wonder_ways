@@ -109,6 +109,13 @@ define('wonder-ways-ember/components/index-map', ['exports', 'ember'], function 
       // });
 
       myLayer.setGeoJSON(pointSet);
+
+      myLayer.on("mouseover", function (e) {
+        e.layer.openPopup();
+      });
+      myLayer.on("mouseout", function (e) {
+        e.layer.closePopup();
+      });
     }
   });
 
@@ -3445,7 +3452,7 @@ catch(err) {
 if (runningTests) {
   require("wonder-ways-ember/tests/test-helper");
 } else {
-  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.964bab5d"});
+  require("wonder-ways-ember/app")["default"].create({"name":"wonder-ways-ember","version":"0.0.0.45f03730"});
 }
 
 /* jshint ignore:end */
