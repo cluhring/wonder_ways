@@ -87,5 +87,12 @@ export default Ember.Component.extend({
     // });
 
     myLayer.setGeoJSON(pointSet);
+    
+    myLayer.on('mouseover', function(e) {
+      e.layer.openPopup();
+    });
+    myLayer.on('mouseout', function(e) {
+      e.layer.closePopup();
+    });
   }
 });
